@@ -1,0 +1,31 @@
+<div class="globo-formbuilder" data-id={{section.settings.form_id}} ></div>
+{% schema %}
+  {
+    "name": "Form",
+    "settings": [
+        {
+          "type": "select",
+          "id": "form_id",
+          "label": "Select form to display",
+          "default": "5828",
+          "options": [{"label":"Wholesale","value":"5828"},{"label":"Private Labeling","value":"5897"},{"label":"Online Orders","value":"5905"},{"label":"Ryan - W&PL","value":"5912"},{"label":"Wholesale Application","value":"6273"}]
+        }
+    ],
+    "presets": [
+        {
+          "name": {
+            "en": "Form"
+          },
+          "category": {
+            "en": "Powerful Contact Form Builder"
+          }
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

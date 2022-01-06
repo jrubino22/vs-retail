@@ -1,0 +1,62 @@
+<section  id="slide-slider-{{section.id}}" class="slick-slider-animation--{{ section.settings.slideshow_animation }}">
+  
+  <div id="" class="lazy">
+    {% for block in section.blocks %}
+        <div>
+           <img src="{{ block.settings.image | img_url: 'original' }}" alt="" class="slider_img">
+        </div>   
+      
+    {% endfor %}
+   </div>
+</section>
+{% schema %}
+{
+  "name": "Slideshow",
+  "max_blocks": 6,
+  "class": "shopify-section--slideshow header--full full-width",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "image",
+    "name": "Slide",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image desktop"
+      }
+    ]
+  }
+],
+"presets": [
+  {
+    "name": "Slideshow",
+    "category": "Image",
+    "blocks":
+      [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+	
+{% endstylesheet %}
+
+  
+
+{% javascript %}
+    
+{% endjavascript %}
