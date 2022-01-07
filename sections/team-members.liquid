@@ -8,9 +8,9 @@
 
   {% for team-member in section.blocks %}
     <div>
-        <h3>{{ member.settings.staff-name }}</h3>
-        <span>{{ member.settings.staff-title }}</span>
-        <p></p>
+        <h3>{{ team-member.settings.staff-name }}</h3>
+        <span>{{ team-member.settings.staff-title }}</span>
+        <p> {{ team-member.settings.staff-bio }}</p>
     </div>
   {% endfor %}
 
