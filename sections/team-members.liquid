@@ -1,0 +1,54 @@
+<div class="container">
+  {% if section.settings.title != blank %}
+    <div class="sixteen columns">
+      <h2 class="title center">{{ section.settings.title | escape }}</h2>
+      <div class="feature_divider"></div>
+    </div>
+  {% endif %}
+
+  {% for team-member in section.blocks %}
+    <div>
+        <h3>{{ member.settings.staff-name }}</h3>
+        <span>{{ member.settings.staff-title }}</span>
+        <p></p>
+    </div>
+  {% endfor %}
+
+{% schema %}
+{
+    "name" : "team members",
+    "class" : "team-members-section",
+    "settings" : [
+        {
+            "id" : "title",
+            "type" : "text",
+            "label" : "Section Title", 
+            "default" : "Meet Our Team"
+        }
+    ],
+    "blocks" : [
+        {
+            "name" : "Team Member",
+            "type" : "Staff-Profile",
+            "settings" : [
+                {
+                    "id" : "staff-name",
+                    "type" : "text",
+                    "label" : "Name"
+                },
+                {
+                    "id" : "staff-title",
+                    "type" : "text",
+                    "label" : "Job Title"
+                },
+                {
+                    "id" : "staff-bio",
+                    "type" : "textarea",
+                    "label" : "Bio"
+                }
+
+            ]
+        }
+    ]
+}
+{% endschema %}
