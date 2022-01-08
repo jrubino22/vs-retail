@@ -5,15 +5,15 @@
       <div class="feature_divider"></div>
     </div>
   {% endif %}
-
+  <div class="row">
   {% for team-member in section.blocks %}
-    <div>
+    <div class="eight columns omega center">
         <h3>{{ team-member.settings.staff-name }}</h3>
         <span>{{ team-member.settings.staff-title }}</span>
         <p> {{ team-member.settings.staff-bio }}</p>
     </div>
   {% endfor %}
-
+</div>
 {% schema %}
 {
     "name" : "team members",
