@@ -1,25 +1,24 @@
 <div class="container">
-  {%- if section.settings.title != blank -%}
+  {% if section.settings.title != blank %}
     <div class="sixteen columns">
       <h2 class="title center">{{ section.settings.title | escape }}</h2>
       <div class="feature_divider"></div>
     </div>
-  {%- endif -%}
+  {% endif %}
   <div class="row">
-  {%- for team-member in section.blocks -%}
+  {% for team-member in section.blocks %}
     <div class="eight columns omega center">
-        {%}
-        {% if member.settings.photo %}
-            {{ member.settings.photo | img_url | img_tag }}
-        {% end if %}
+        {% if team-member.settings.photo %}
+        <img src="{{ team-member.settings.photo | img_url: "300x" | img}}" />
+        {% endif %}
         <h3>{{ team-member.settings.staff-name }}</h3>
         <span>{{ team-member.settings.staff-title }}</span>
         <p> {{ team-member.settings.staff-bio }}</p>
     </div>
-  {%- endfor -%}
+  {% endfor %}
 </div>
 {% schema %}
-
+{
     "name" : "team members",
     "class" : "team-members-section",
     "settings" : [
