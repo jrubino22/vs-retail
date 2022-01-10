@@ -8,7 +8,10 @@
   <div class="row">
   {%- for team-member in section.blocks -%}
     <div class="eight columns omega center">
-        {{ member.settings.photo | img_url | img_tag }}
+        {%}
+        {% if member.settings.photo %}
+            {{ member.settings.photo | img_url | img_tag }}
+        {% end if %}
         <h3>{{ team-member.settings.staff-name }}</h3>
         <span>{{ team-member.settings.staff-title }}</span>
         <p> {{ team-member.settings.staff-bio }}</p>
@@ -16,7 +19,7 @@
   {%- endfor -%}
 </div>
 {% schema %}
-{
+
     "name" : "team members",
     "class" : "team-members-section",
     "settings" : [
