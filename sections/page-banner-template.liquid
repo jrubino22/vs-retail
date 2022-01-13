@@ -1,81 +1,81 @@
-{% comment %}
+{%- comment  -%}
 ** Banner page - custom view **
 - Page template
-{% endcomment %}
+{%- endcomment  -%}
 
-{% if section.settings.show_banner %}
+{%- if section.settings.show_banner  -%}
 
   <section id="banner-{{section.id}}" class="banner page_banner">
-    {% if section.settings.image != nil %}
-      {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
-    {% else %}
+    {%- if section.settings.image != nil  -%}
+      {%- include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true  -%}
+    {%- else  -%}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
-    {% endif %}
-    {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
-      {% if section.settings.button1_link != blank %}
+    {%- endif  -%}
+    {%- unless section.settings.button1_link != blank and section.settings.button2_link != blank  -%}
+      {%- if section.settings.button1_link != blank  -%}
         <a href="{{ section.settings.button1_link }}" class="banner-full-link">
           {{ section.settings.button1 }}
         </a>
-      {% endif %}
-      {% if section.settings.button2_link != blank %}
+      {%- endif  -%}
+      {%- if section.settings.button2_link != blank  -%}
         <a href="{{ section.settings.button2_link }}" class="banner-full-link">
           {{ section.settings.button2 }}
         </a>
-      {% endif %}
-    {% endunless %}
-    {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+      {%- endif  -%}
+    {%- endunless  -%}
+    {%- unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank  -%}
       <div class="position-{{ section.settings.text_position }} caption js-caption">
         <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
-          {% if section.settings.pretext != blank %}
+          {%- if section.settings.pretext != blank  -%}
             <div class="pretext">
               {{ section.settings.pretext }}
             </div>
-          {% endif %}
-          {% if section.settings.title != blank %}
+          {%- endif  -%}
+          {%- if section.settings.title != blank  -%}
             <h1 class="headline">
               {{ section.settings.title }}
             </h1>
-          {% endif %}
-          {% if section.settings.subtitle != blank %}
+          {%- endif  -%}
+          {%- if section.settings.subtitle != blank  -%}
             <div class="subtitle">
               {{ section.settings.subtitle }}
             </div>
-          {% endif %}
-          {% if section.settings.button1 != blank %}
-            <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+          {%- endif  -%}
+          {%- if section.settings.button1 != blank  -%}
+            <a {%- if section.settings.button1_link != blank  -%}href="{{ section.settings.button1_link }}"{%- endif  -%} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
               {{ section.settings.button1 }}
             </a>
-          {% endif %}
-          {% if section.settings.button2 != blank %}
-            <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+          {%- endif  -%}
+          {%- if section.settings.button2 != blank  -%}
+            <a {%- if section.settings.button2_link != blank  -%}href="{{ section.settings.button2_link }}"{%- endif  -%} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
               {{ section.settings.button2 }}
             </a>
-          {% endif %}
+          {%- endif  -%}
         </div>
       </div>
-    {% endunless %}
+    {%- endunless  -%}
   </section>
 
-{% endif %}
+{%- endif  -%}
 
 <a name="pagecontent" id="pagecontent"></a>
 
 <div class="container main content">
   <div class="sixteen columns page clearfix">
-    {% unless section.settings.show_banner %}
+    {%- unless section.settings.show_banner  -%}
       <h1>
         {{ page.title }}
       </h1>
       <div class="feature_divider"></div>
-    {% endunless %}
+    {%- endunless  -%}
     <div>
-      {% include 'page-multi-column', content: page.content %}
+      {%- include 'page-multi-column', content: page.content  -%}
     </div>
   </div>
 </div>
 
 <style>
-  {% if section.settings.show_banner %}
+  {%- if section.settings.show_banner  -%}
     .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
       padding: 0;
     }
@@ -84,10 +84,10 @@
         padding-top: 0;
       }
     }
-  {% endif %}
+  {%- endif  -%}
 </style>
 
-{% schema %}
+{%- schema  -%}
 
 {
   "name": "Page | banner",
@@ -210,4 +210,4 @@
   }
 }
 
-{% endschema %}
+{%- endschema  -%}

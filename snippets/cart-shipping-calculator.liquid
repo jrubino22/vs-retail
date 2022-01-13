@@ -1,4 +1,4 @@
-{% if settings.show_shipping_calculator %}
+{%- if settings.show_shipping_calculator  -%}
 
 <div id="shipping-calculator" class="sixteen columns">
 
@@ -7,15 +7,15 @@
   <div id="shipping-calculator-form-wrapper" class="clearfix">
     <div class="four columns alpha" id="address_country_container">
       <label for="address_country">{{ 'cart.shipping_calculator.country' | t }}</label>
-      <select id="address_country" name="address[country]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.country %}{{ customer.default_address.country }}{% elsif settings.shipping_calculator_default_country != '' %}{{ settings.shipping_calculator_default_country }}{% endif %}">{{ country_option_tags }}</select>
+      <select id="address_country" name="address[country]" data-default="{%- if shop.customer_accounts_enabled and customer and customer.default_address.country  -%}{{ customer.default_address.country }}{%- elsif settings.shipping_calculator_default_country != ''  -%}{{ settings.shipping_calculator_default_country }}{%- endif  -%}">{{ country_option_tags }}</select>
     </div>
     <div class="four columns" id="address_province_container" style="display:none;">
       <label for="address_province">{{ 'cart.shipping_calculator.province' | t }}</label>
-      <select id="address_province" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
+      <select id="address_province" name="address[province]" data-default="{%- if shop.customer_accounts_enabled and customer and customer.default_address.province != ''  -%}{{ customer.default_address.province }}{%- endif  -%}"></select>
     </div>
     <div class="three columns" id="address_zip_container">
       <label for="address_zip">{{ 'cart.shipping_calculator.zip_code' | t }}</label>
-      <input type="text" id="address_zip" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
+      <input type="text" id="address_zip" name="address[zip]"{%- if shop.customer_accounts_enabled and customer  -%} value="{{ customer.default_address.zip }}"{%- endif  -%} />
     </div>
     <div class="four columns omega" id="get-rates-container">
       <label for="get-rates-submit">&nbsp;</label>
@@ -53,4 +53,4 @@
 <style> #shipping-calculator { display: none; } </style>
 <![endif]-->
 
-{% endif %}
+{%- endif  -%}

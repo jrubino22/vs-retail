@@ -1,98 +1,98 @@
-{% comment %}
+{%- comment  -%}
 ** Collection list - default view **
 - Template
 - Uses blocks
 - This template can be viewed by going to /collections of the shop.
-{% endcomment %}
+{%- endcomment  -%}
 
-{% if section.settings.image %}
+{%- if section.settings.image  -%}
   <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}">
-    {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true, progressive: true %}
-      {% if section.settings.display_collection_title %}
+    {%- include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true, progressive: true  -%}
+      {%- if section.settings.display_collection_title  -%}
         <div class="caption">
           <h1 class="headline">{{ 'collections.general.title' | t }}</h1>
         </div>
-      {% endif %}
+      {%- endif  -%}
   </header>
-{% endif %}
+{%- endif  -%}
 
 <a name="pagecontent" id="pagecontent"></a>
 
 <div class="container">
-  {% paginate collections by section.settings.pagination_limit %}
-    {% assign collections_per_row = section.settings.collections_per_row %}
+  {%- paginate collections by section.settings.pagination_limit  -%}
+    {%- assign collections_per_row = section.settings.collections_per_row  -%}
     <div class="clearfix breadcrumb-collection">
-      {% if section.settings.collection_breadcrumb %}
+      {%- if section.settings.collection_breadcrumb  -%}
         <div class="eight columns breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
           <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
           <span class="breadcrumb-divider">/</span>
           <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'collections.general.title' | t }}</span></a></span>
 
-          {% if paginate.pages != 0 %}
+          {%- if paginate.pages != 0  -%}
             <span class="breadcrumb-divider">/</span> {{ 'general.breadcrumbs.page' | t: current_page: paginate.current_page, pages: paginate.pages }}
-          {% endif %}
+          {%- endif  -%}
         </div>
-      {% endif %}
+      {%- endif  -%}
     </div>
     <div class="section clearfix">
-      {% if section.settings.display_collection_title and section.settings.image == blank %}
+      {%- if section.settings.display_collection_title and section.settings.image == blank  -%}
         <div class="sixteen columns">
           <h1>{{ 'collections.general.title' | t }}</h1>
         </div>
-      {% endif %}
+      {%- endif  -%}
       <div class="sixteen columns">
         <div class="feature_divider"></div>
       </div>
     </div>
 
-    {% comment %}Check to see if sidebar should be enabled{% endcomment %}
-    {% if section.blocks.size > 0 %}
-      {% assign sidebar = true %}
-    {% else %}
-      {% assign sidebar = false %}
-    {% endif %}
+    {%- comment  -%}Check to see if sidebar should be enabled{%- endcomment  -%}
+    {%- if section.blocks.size > 0  -%}
+      {%- assign sidebar = true  -%}
+    {%- else  -%}
+      {%- assign sidebar = false  -%}
+    {%- endif  -%}
 
-    {% if sidebar %}
-      {% include 'sidebar' %}
+    {%- if sidebar  -%}
+      {%- include 'sidebar'  -%}
       <div class="twelve columns list-collection-wrapper medium-down--one-whole">
-    {% else %}
+    {%- else  -%}
       <div class="sixteen columns list-collection-wrapper">
-    {% endif %}
+    {%- endif  -%}
 
     <div class="list-collections clearfix equal-columns--clear equal-columns--outside-trim">
 
-      {% for collection in collections %}
-        {% unless collection.handle == 'frontpage' %}
-          {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+      {%- for collection in collections  -%}
+        {%- unless collection.handle == 'frontpage'  -%}
+          {%- capture collection_title  -%}{{ collection.title | escape }}{%- endcapture  -%}
           <div class="
-          {% if collections_per_row == 2 %}
+          {%- if collections_per_row == 2  -%}
             eight columns
-          {% elsif collections_per_row == 3 %}
+          {%- elsif collections_per_row == 3  -%}
             one-third column
-          {% else %}
+          {%- else  -%}
             four columns
-          {% endif %}
-          thumbnail {% cycle 'even', 'odd' %}
-          {% if settings.mobile_products_per_row == '1' %}
+          {%- endif  -%}
+          thumbnail {%- cycle 'even', 'odd'  -%}
+          {%- if settings.mobile_products_per_row == '1'  -%}
             medium-down--one-half
             small-down--one-whole
-          {% else %}
+          {%- else  -%}
             medium-down--one-half
             small-down--one-half
-          {% endif %}">
+          {%- endif  -%}">
 
         <div class="product-wrap">
           <div class="image__container">
-            {% if collection.image %}
-              {% assign collection_image = collection.image.src %}
-            {% else %}
-              {% assign collection_image = collection.products.first.featured_image %}
-            {% endif %}
-            {% include 'image-element', image: collection_image, alt: collection.title, object_fit: section.settings.align_height, max_height: section.settings.collection_height %}
+            {%- if collection.image  -%}
+              {%- assign collection_image = collection.image.src  -%}
+            {%- else  -%}
+              {%- assign collection_image = collection.products.first.featured_image  -%}
+            {%- endif  -%}
+            {%- include 'image-element', image: collection_image, alt: collection.title, object_fit: section.settings.align_height, max_height: section.settings.collection_height  -%}
           </div>
 
             <a href="{{ collection.url }}" title="{{ collection_title }}" class="hidden-product-link">{{ collection_title }}</a>
-            {% if settings.thumbnail_hover_enabled %}
+            {%- if settings.thumbnail_hover_enabled  -%}
                 <div class="thumbnail-overlay">
                 <a href="{{ collection.url }}" title="{{ collection_title }}" class="hidden-product-link">{{ collection_title }}</a>
                   <div class="info">
@@ -102,29 +102,29 @@
                       <a href="{{ collection.url }}" title="{{ collection_title }}"><span class="view_all">{{ 'collections.general.view_all' | t }}</span></a>
                   </div>
                 </div>
-            {% endif %}
-            <a class="collection-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}" href="{{ collection.url }}" itemprop="url">
+            {%- endif  -%}
+            <a class="collection-info__caption {%- if settings.thumbnail_hover_enabled  -%}hidden{%- endif  -%}" href="{{ collection.url }}" itemprop="url">
               <span class="title">{{ collection.title }}</span>
             </a>
           </div>
         </div>
-        {% endunless %}
-      {% endfor %}
+        {%- endunless  -%}
+      {%- endfor  -%}
       </div>
-      {% include 'pagination' with sidebar %}
+      {%- include 'pagination' with sidebar  -%}
     </div>
-  {% endpaginate %}
+  {%- endpaginate  -%}
 </div>
 
-{% if section.settings.align_height %}
+{%- if section.settings.align_height  -%}
   <style>
     .list-collections .thumbnail img {
       max-height: {{ section.settings.collection_height }}px;
     }
   </style>
-{% endif %}
+{%- endif  -%}
 
-{% schema %}
+{%- schema  -%}
 
 {
   "name": "Collections",
@@ -294,4 +294,4 @@
   ]
 }
 
-{% endschema %}
+{%- endschema  -%}

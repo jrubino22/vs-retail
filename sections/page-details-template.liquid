@@ -1,84 +1,84 @@
-{% comment %}
+{%- comment  -%}
 ** Details page - custom view **
 - Page template
 - Uses blocks
-{% endcomment %}
+{%- endcomment  -%}
 
 <a name="pagecontent" id="pagecontent"></a>
 
 <div class="detail-sections">
 
-{% if section.blocks.size > 0 %}
-  {% for block in section.blocks %}
+{%- if section.blocks.size > 0  -%}
+  {%- for block in section.blocks  -%}
     <div {{ block.shopify_attributes }} class="block__{{ block.type }} block__{{ block.id }}
-    {% if block.type == "image_with_text_overlay" and block.settings.wide_display %}
+    {%- if block.type == "image_with_text_overlay" and block.settings.wide_display  -%}
       under-menu
-    {% elsif block.type == "featured_video" and block.settings.wide_display %}
+    {%- elsif block.type == "featured_video" and block.settings.wide_display  -%}
       under-menu
-    {% elsif block.type == "featured_collection" %}
+    {%- elsif block.type == "featured_collection"  -%}
       featured-collection-section
-    {% endif %}
+    {%- endif  -%}
     ">
 
-      {% if block.type == "blog_posts" %}
+      {%- if block.type == "blog_posts"  -%}
         <!-- Blog posts -->
-        {% include 'include-featured-blog', type: 'block' %}
+        {%- include 'include-featured-blog', type: 'block'  -%}
 
-      {% elsif block.type == "contact_form" %}
+      {%- elsif block.type == "contact_form"  -%}
         <!-- Contact form -->
-        {% include 'include-contact-form', type: 'block' %}
+        {%- include 'include-contact-form', type: 'block'  -%}
 
-      {% elsif block.type == "featured_video" %}
+      {%- elsif block.type == "featured_video"  -%}
         <!-- Featured video -->
-        {% include 'include-video', type: 'block' %}
+        {%- include 'include-video', type: 'block'  -%}
 
-      {% elsif block.type == 'image_gallery' %}
+      {%- elsif block.type == 'image_gallery'  -%}
         <!-- Image gallery -->
-        {% include 'include-gallery', type: 'block' %}
+        {%- include 'include-gallery', type: 'block'  -%}
 
-      {% elsif block.type == "image_with_text" %}
+      {%- elsif block.type == "image_with_text"  -%}
         <!-- Image with text -->
-        {% if block.settings.layout == false %}
+        {%- if block.settings.layout == false  -%}
           <div class="container standard--width">
-        {% endif %}
+        {%- endif  -%}
         <div class="image-with-text
           featured_collections
           clearfix across-1 image-align--{{ block.settings.frontpage_image_position }}">
           <section class="featured-link--section featured-link--image section-{{ forloop.index }}">
-            <div class="featured-link--half featured-link--image {% if block.settings.layout == false %}featured-link--margin{% endif %} image-crop--{{ block.settings.image_crop }}">
+            <div class="featured-link--half featured-link--image {%- if block.settings.layout == false  -%}featured-link--margin{%- endif  -%} image-crop--{{ block.settings.image_crop }}">
               <div class="featured-link--wrap">
-                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} title="{{ block.settings.title }}">
-                  {% if block.settings.image %}
-                    {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}
-                  {% else %}
-                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                <a {%- if block.settings.link != blank  -%}href="{{ block.settings.link }}"{%- endif  -%} title="{{ block.settings.title }}">
+                  {%- if block.settings.image  -%}
+                    {%- include 'image-element', image: block.settings.image, alt: block.settings.image.alt  -%}
+                  {%- else  -%}
+                    {%- capture i  -%}{%- cycle "1", "2", "3", "4", "5", "6"  -%}{%- endcapture  -%}
                     {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
-                  {% endif %}
+                  {%- endif  -%}
                 </a>
               </div>
             </div>
             <div class="featured-link--half">
               <div class="info text-align--{{block.settings.frontpage_text_align}}">
-                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="collection_title">
+                <a {%- if block.settings.link != blank  -%}href="{{ block.settings.link }}"{%- endif  -%} class="collection_title">
                   {{ block.settings.title }}
                 </a>
-                {% if block.settings.text != blank %}
+                {%- if block.settings.text != blank  -%}
                   <div class="description">{{ block.settings.text }}</div>
-                {% endif %}
-                {% if block.settings.button_label != blank %}
-                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="button">
+                {%- endif  -%}
+                {%- if block.settings.button_label != blank  -%}
+                  <a {%- if block.settings.link != blank  -%}href="{{ block.settings.link }}"{%- endif  -%} class="button">
                     {{ block.settings.button_label }}
                   </a>
-                {% endif %}
+                {%- endif  -%}
               </div>
             </div>
           </section>
         </div>
-        {% if block.settings.layout == false %}
+        {%- if block.settings.layout == false  -%}
           </div>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.layout == false %}
+        {%- if block.settings.layout == false  -%}
           <style>
             #shopify-section-{{ section.id }} .featured-link--section {
               margin-bottom: 3%;
@@ -103,51 +103,51 @@
               width: 45%;
             }
           </style>
-        {% endif %}
+        {%- endif  -%}
 
-      {% elsif block.type == 'map' %}
+      {%- elsif block.type == 'map'  -%}
         <!-- Map -->
-        {% include 'include-map', type: 'block' %}
+        {%- include 'include-map', type: 'block'  -%}
 
-      {% elsif block.type == "page" %}
+      {%- elsif block.type == "page"  -%}
         <!-- Page -->
-        {% include 'include-content-page', type: 'block' %}
+        {%- include 'include-content-page', type: 'block'  -%}
 
-      {% elsif block.type == 'quote' %}
+      {%- elsif block.type == 'quote'  -%}
         <!-- Quote -->
-        {% include 'include-quote', type: 'block' %}
+        {%- include 'include-quote', type: 'block'  -%}
 
-      {% elsif block.type == "rich_text_and_image" %}
+      {%- elsif block.type == "rich_text_and_image"  -%}
         <!-- Rich text and image -->
-        {% include 'include-featured-text', type: 'block' %}
+        {%- include 'include-featured-text', type: 'block'  -%}
 
-      {% elsif block.type == 'divider' %}
+      {%- elsif block.type == 'divider'  -%}
         <!-- Divider -->
-        {% include 'include-divider', type: 'block' %}
+        {%- include 'include-divider', type: 'block'  -%}
 
-      {% elsif block.type == "featured_collection" %}
+      {%- elsif block.type == "featured_collection"  -%}
         <!-- Featured collection -->
-        {% include 'include-featured-collection', type: 'block' %}
+        {%- include 'include-featured-collection', type: 'block'  -%}
 
-      {% elsif block.type == "image_with_text_overlay" %}
+      {%- elsif block.type == "image_with_text_overlay"  -%}
         <!-- Image with text overlay -->
-        {% include 'include-image-with-text-overlay', type: 'block' %}
+        {%- include 'include-image-with-text-overlay', type: 'block'  -%}
 
-      {% elsif block.type == "recently_viewed_products" %}
+      {%- elsif block.type == "recently_viewed_products"  -%}
         <!-- Related Products -->
-        {% include 'include-recently-viewed', type: 'block' %}
+        {%- include 'include-recently-viewed', type: 'block'  -%}
 
-      {% elsif block.type == "custom_html" %}
+      {%- elsif block.type == "custom_html"  -%}
         <!-- Custom HTML -->
-        {% include 'include-custom-html', type: 'block' %}
+        {%- include 'include-custom-html', type: 'block'  -%}
 
-      {% endif %}
+      {%- endif  -%}
     </div>
-  {% endfor %}
-{% endif %}
+  {%- endfor  -%}
+{%- endif  -%}
 </div>
 
-{% schema %}
+{%- schema  -%}
 
 {
   "name": "Page | details",
@@ -1144,4 +1144,4 @@
   }
 }
 
-{% endschema %}
+{%- endschema  -%}

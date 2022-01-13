@@ -1,274 +1,274 @@
-{% comment %}
+{%- comment  -%}
 ** Mega menu - homepage partial **
 - Static section
 - Uses blocks
 - Must be enabled through general settings
-{% endcomment %}
+{%- endcomment  -%}
 
-{% if section.blocks.size > 0 %}
+{%- if section.blocks.size > 0  -%}
   <div class="dropdown_container mega-menu mega-menu-1" data-dropdown="{{ section.settings.parent | handleize }}">
     <div class="dropdown menu">
-      <div class="dropdown_content {% if section.blocks < 4 %}dropdown_narrow{% endif %}">
-        {% for block in section.blocks %}
+      <div class="dropdown_content {%- if section.blocks < 4  -%}dropdown_narrow{%- endif  -%}">
+        {%- for block in section.blocks  -%}
           <div class="dropdown_column" {{ block.shopify_attributes }}>
-            {% if block.type == 'column' %}
-              {% comment %}Richtext{% endcomment %}
-              {% if block.settings.richtext_top %}
+            {%- if block.type == 'column'  -%}
+              {%- comment  -%}Richtext{%- endcomment  -%}
+              {%- if block.settings.richtext_top  -%}
                 <div class="mega-menu__richtext">
                   {{ block.settings.richtext_top }}
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Image with caption and link{% endcomment %}
-              {% if block.settings.image_top != nil or block.settings.image_caption_top != blank %}
+              {%- comment  -%}Image with caption and link{%- endcomment  -%}
+              {%- if block.settings.image_top != nil or block.settings.image_caption_top != blank  -%}
                 <div class="mega-menu__image-caption-link">
-                  <a {% if block.settings.image_link_top != blank %}href="{{ block.settings.image_link_top }}"{% endif %} >
-                    {% if block.settings.image_top != nil %}
-                      {% include 'image-element', image: block.settings.image_top, alt: block.settings.image_top.alt %}
-                    {% endif %}
-                    {% if block.settings.image_caption_top %}
+                  <a {%- if block.settings.image_link_top != blank  -%}href="{{ block.settings.image_link_top }}"{%- endif  -%} >
+                    {%- if block.settings.image_top != nil  -%}
+                      {%- include 'image-element', image: block.settings.image_top, alt: block.settings.image_top.alt  -%}
+                    {%- endif  -%}
+                    {%- if block.settings.image_caption_top  -%}
                       <p>{{ block.settings.image_caption_top }}</p>
-                    {% endif %}
+                    {%- endif  -%}
                   </a>
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Menu 1{% endcomment %}
-              {% if block.settings.menu_1 != blank %}
+              {%- comment  -%}Menu 1{%- endcomment  -%}
+              {%- if block.settings.menu_1 != blank  -%}
                 <div class="dropdown_column__menu">
                   <ul class="dropdown_title">
                     <li>
-                      <a {% if block.settings.menu_1_link %}href="{{ block.settings.menu_1_link }}"{% endif %}>{{ linklists[block.settings.menu_1].title }}</a>
+                      <a {%- if block.settings.menu_1_link  -%}href="{{ block.settings.menu_1_link }}"{%- endif  -%}>{{ linklists[block.settings.menu_1].title }}</a>
                     </li>
                   </ul>
-                  {% if linklists[block.settings.menu_1] != empty %}
+                  {%- if linklists[block.settings.menu_1] != empty  -%}
                     <ul>
-                      {% for sublink in linklists[block.settings.menu_1].links %}
+                      {%- for sublink in linklists[block.settings.menu_1].links  -%}
                         <li>
                           <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                         </li>
-                      {% endfor %}
+                      {%- endfor  -%}
                     </ul>
-                  {% endif %}
+                  {%- endif  -%}
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Menu 2{% endcomment %}
-              {% if block.settings.menu_2 != blank %}
+              {%- comment  -%}Menu 2{%- endcomment  -%}
+              {%- if block.settings.menu_2 != blank  -%}
                 <div class="dropdown_column__menu">
                   <ul class="dropdown_title">
                     <li>
-                      <a {% if block.settings.menu_2_link %}href="{{ block.settings.menu_2_link }}"{% endif %}>{{ linklists[block.settings.menu_2].title }}</a>
+                      <a {%- if block.settings.menu_2_link  -%}href="{{ block.settings.menu_2_link }}"{%- endif  -%}>{{ linklists[block.settings.menu_2].title }}</a>
                     </li>
                   </ul>
-                  {% if linklists[block.settings.menu_2] != empty %}
+                  {%- if linklists[block.settings.menu_2] != empty  -%}
                     <ul>
-                      {% for sublink in linklists[block.settings.menu_2].links %}
+                      {%- for sublink in linklists[block.settings.menu_2].links  -%}
                         <li>
                           <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                         </li>
-                      {% endfor %}
+                      {%- endfor  -%}
                     </ul>
-                  {% endif %}
+                  {%- endif  -%}
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Menu 3{% endcomment %}
-              {% if block.settings.menu_3 != blank %}
+              {%- comment  -%}Menu 3{%- endcomment  -%}
+              {%- if block.settings.menu_3 != blank  -%}
                 <div class="dropdown_column__menu">
                   <ul class="dropdown_title">
                     <li>
-                      <a {% if block.settings.menu_3_link %}href="{{ block.settings.menu_3_link }}"{% endif %}>{{ linklists[block.settings.menu_3].title }}</a>
+                      <a {%- if block.settings.menu_3_link  -%}href="{{ block.settings.menu_3_link }}"{%- endif  -%}>{{ linklists[block.settings.menu_3].title }}</a>
                     </li>
                   </ul>
-                  {% if linklists[block.settings.menu_3] != empty %}
+                  {%- if linklists[block.settings.menu_3] != empty  -%}
                     <ul>
-                      {% for sublink in linklists[block.settings.menu_3].links %}
+                      {%- for sublink in linklists[block.settings.menu_3].links  -%}
                         <li>
                           <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                         </li>
-                      {% endfor %}
+                      {%- endfor  -%}
                     </ul>
-                  {% endif %}
+                  {%- endif  -%}
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Menu 4{% endcomment %}
-              {% if block.settings.menu_4 != blank %}
+              {%- comment  -%}Menu 4{%- endcomment  -%}
+              {%- if block.settings.menu_4 != blank  -%}
                 <div class="dropdown_column__menu">
                   <ul class="dropdown_title">
                     <li>
-                      <a {% if block.settings.menu_4_link %}href="{{ block.settings.menu_4_link }}"{% endif %}>{{ linklists[block.settings.menu_4].title }}</a>
+                      <a {%- if block.settings.menu_4_link  -%}href="{{ block.settings.menu_4_link }}"{%- endif  -%}>{{ linklists[block.settings.menu_4].title }}</a>
                     </li>
                   </ul>
-                  {% if linklists[block.settings.menu_4] != empty %}
+                  {%- if linklists[block.settings.menu_4] != empty  -%}
                     <ul>
-                      {% for sublink in linklists[block.settings.menu_4].links %}
+                      {%- for sublink in linklists[block.settings.menu_4].links  -%}
                         <li>
                           <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                         </li>
-                      {% endfor %}
+                      {%- endfor  -%}
                     </ul>
-                  {% endif %}
+                  {%- endif  -%}
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Image with caption and link{% endcomment %}
-              {% if block.settings.image_bottom != nil or block.settings.image_caption_bottom != blank %}
+              {%- comment  -%}Image with caption and link{%- endcomment  -%}
+              {%- if block.settings.image_bottom != nil or block.settings.image_caption_bottom != blank  -%}
                 <div class="mega-menu__image-caption-link">
-                  <a {% if block.settings.image_link_bottom != blank %}href="{{ block.settings.image_link_bottom }}"{% endif %} >
-                    {% if block.settings.image_bottom != nil %}
-                      {% include 'image-element', image: block.settings.image_bottom, alt: block.settings.image_bottom.alt %}
-                    {% endif %}
-                    {% if block.settings.image_caption_bottom %}
+                  <a {%- if block.settings.image_link_bottom != blank  -%}href="{{ block.settings.image_link_bottom }}"{%- endif  -%} >
+                    {%- if block.settings.image_bottom != nil  -%}
+                      {%- include 'image-element', image: block.settings.image_bottom, alt: block.settings.image_bottom.alt  -%}
+                    {%- endif  -%}
+                    {%- if block.settings.image_caption_bottom  -%}
                       <p>{{ block.settings.image_caption_bottom }}</p>
-                    {% endif %}
+                    {%- endif  -%}
                   </a>
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-              {% comment %}Richtext{% endcomment %}
-              {% if block.settings.richtext_bottom %}
+              {%- comment  -%}Richtext{%- endcomment  -%}
+              {%- if block.settings.richtext_bottom  -%}
                 <div class="mega-menu__richtext">
                   {{ block.settings.richtext_bottom }}
                 </div>
-              {% endif %}
+              {%- endif  -%}
 
-            {% endif %}
+            {%- endif  -%}
           </div>
-        {% endfor %}
+        {%- endfor  -%}
       </div>
     </div>
   </div>
 
   <ul class="mobile-mega-menu hidden" data-mobile-dropdown="{{ section.settings.parent | handleize }}">
-    {% for block in section.blocks %}
+    {%- for block in section.blocks  -%}
       <div>
-      {% if block.type == 'column' %}
-        {% if block.settings.richtext_top %}
+      {%- if block.type == 'column'  -%}
+        {%- if block.settings.richtext_top  -%}
           <li class="mobile-mega-menu_block mega-menu__richtext">
             {{ block.settings.richtext_top }}
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.image_top != nil or block.settings.image_caption_top != blank %}
+        {%- if block.settings.image_top != nil or block.settings.image_caption_top != blank  -%}
           <li class="mobile-mega-menu_block"  >
-            <a {% if block.settings.image_link_top != blank %}href="{{ block.settings.image_link_top }}"{% endif %} >
-              {% if block.settings.image_top != nil %}
-                {% include 'image-element', image: block.settings.image_top, alt: block.settings.image_top.alt %}
-              {% endif %}
+            <a {%- if block.settings.image_link_top != blank  -%}href="{{ block.settings.image_link_top }}"{%- endif  -%} >
+              {%- if block.settings.image_top != nil  -%}
+                {%- include 'image-element', image: block.settings.image_top, alt: block.settings.image_top.alt  -%}
+              {%- endif  -%}
               <p>{{ block.settings.image_caption_top }}</p>
             </a>
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.menu_1 != blank %}
+        {%- if block.settings.menu_1 != blank  -%}
           <li class="mobile-mega-menu_block sublink">
-            {% if block.settings.menu_1_link == 'http://' or block.settings.menu_1_link == '' or block.settings.menu_1_link == '/' or block.settings.menu_1_link == 'https://' or block.settings.menu_1_link == '#' or block.settings.menu_1_link == blank %}
+            {%- if block.settings.menu_1_link == 'http://' or block.settings.menu_1_link == '' or block.settings.menu_1_link == '/' or block.settings.menu_1_link == 'https://' or block.settings.menu_1_link == '#' or block.settings.menu_1_link == blank  -%}
               <a data-no-instant href="{{ block.settings.menu_1_link }}" class="parent-link--false">
                 {{ linklists[block.settings.menu_1].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% else %}
+            {%- else  -%}
               <a data-no-instant href="{{ block.settings.menu_1_link }}" class="parent-link--true">
                 {{ linklists[block.settings.menu_1].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% endif %}
+            {%- endif  -%}
             <ul>
-              {% for sublink in linklists[block.settings.menu_1].links %}
+              {%- for sublink in linklists[block.settings.menu_1].links  -%}
                 <li>
                   <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                 </li>
-              {% endfor %}
+              {%- endfor  -%}
             </ul>
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.menu_2 != blank %}
+        {%- if block.settings.menu_2 != blank  -%}
           <li class="mobile-mega-menu_block sublink">
-            {% if block.settings.menu_2_link == 'http://' or block.settings.menu_2_link == '' or block.settings.menu_2_link == '/' or block.settings.menu_2_link == 'https://' or block.settings.menu_2_link == '#' or block.settings.menu_2_link == blank %}
+            {%- if block.settings.menu_2_link == 'http://' or block.settings.menu_2_link == '' or block.settings.menu_2_link == '/' or block.settings.menu_2_link == 'https://' or block.settings.menu_2_link == '#' or block.settings.menu_2_link == blank  -%}
               <a data-no-instant href="{{ block.settings.menu_2_link }}" class="parent-link--false">
                 {{ linklists[block.settings.menu_2].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% else %}
+            {%- else  -%}
               <a data-no-instant href="{{ block.settings.menu_2_link }}" class="parent-link--true">
                 {{ linklists[block.settings.menu_2].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% endif %}
+            {%- endif  -%}
             <ul>
-              {% for sublink in linklists[block.settings.menu_2].links %}
+              {%- for sublink in linklists[block.settings.menu_2].links  -%}
                 <li>
                   <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                 </li>
-              {% endfor %}
+              {%- endfor  -%}
             </ul>
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.menu_3 != blank %}
+        {%- if block.settings.menu_3 != blank  -%}
           <li class="mobile-mega-menu_block sublink">
-            {% if block.settings.menu_3_link == 'http://' or block.settings.menu_3_link == '' or block.settings.menu_3_link == '/' or block.settings.menu_3_link == 'https://' or block.settings.menu_3_link == '#' or block.settings.menu_3_link == blank %}
+            {%- if block.settings.menu_3_link == 'http://' or block.settings.menu_3_link == '' or block.settings.menu_3_link == '/' or block.settings.menu_3_link == 'https://' or block.settings.menu_3_link == '#' or block.settings.menu_3_link == blank  -%}
               <a data-no-instant href="{{ block.settings.menu_3_link }}" class="parent-link--false">
                 {{ linklists[block.settings.menu_3].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% else %}
+            {%- else  -%}
               <a data-no-instant href="{{ block.settings.menu_3_link }}" class="parent-link--true">
                 {{ linklists[block.settings.menu_3].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% endif %}
+            {%- endif  -%}
             <ul>
-              {% for sublink in linklists[block.settings.menu_3].links %}
+              {%- for sublink in linklists[block.settings.menu_3].links  -%}
                 <li>
                   <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                 </li>
-              {% endfor %}
+              {%- endfor  -%}
             </ul>
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.menu_4 != blank %}
+        {%- if block.settings.menu_4 != blank  -%}
           <li class="mobile-mega-menu_block sublink">
-            {% if block.settings.menu_4_link == 'http://' or block.settings.menu_4_link == '' or block.settings.menu_4_link == '/' or block.settings.menu_4_link == 'https://' or block.settings.menu_4_link == '#' or block.settings.menu_4_link == blank %}
+            {%- if block.settings.menu_4_link == 'http://' or block.settings.menu_4_link == '' or block.settings.menu_4_link == '/' or block.settings.menu_4_link == 'https://' or block.settings.menu_4_link == '#' or block.settings.menu_4_link == blank  -%}
               <a data-no-instant href="{{ block.settings.menu_4_link }}" class="parent-link--false">
                 {{ linklists[block.settings.menu_4].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% else %}
+            {%- else  -%}
               <a data-no-instant href="{{ block.settings.menu_4_link }}" class="parent-link--true">
                 {{ linklists[block.settings.menu_4].title }} <span class="right icon-down-arrow"></span>
               </a>
-            {% endif %}
+            {%- endif  -%}
             <ul>
-              {% for sublink in linklists[block.settings.menu_4].links %}
+              {%- for sublink in linklists[block.settings.menu_4].links  -%}
                 <li>
                   <a href="{{ sublink.url }}">{{ sublink.title }}</a>
                 </li>
-              {% endfor %}
+              {%- endfor  -%}
             </ul>
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.image_bottom != nil or block.settings.image_caption_bottom != blank %}
+        {%- if block.settings.image_bottom != nil or block.settings.image_caption_bottom != blank  -%}
           <li class="mobile-mega-menu_block"  >
-            <a {% if block.settings.image_link_bottom != blank %}href="{{ block.settings.image_link_bottom }}"{% endif %} >
-              {% if block.settings.image_bottom != nil %}
-                {% include 'image-element', image: block.settings.image_bottom, alt: block.settings.image_bottom.alt %}
-              {% endif %}
+            <a {%- if block.settings.image_link_bottom != blank  -%}href="{{ block.settings.image_link_bottom }}"{%- endif  -%} >
+              {%- if block.settings.image_bottom != nil  -%}
+                {%- include 'image-element', image: block.settings.image_bottom, alt: block.settings.image_bottom.alt  -%}
+              {%- endif  -%}
               <p>{{ block.settings.image_caption_bottom }}</p>
             </a>
           </li>
-        {% endif %}
+        {%- endif  -%}
 
-        {% if block.settings.richtext_bottom %}
+        {%- if block.settings.richtext_bottom  -%}
           <li class="mobile-mega-menu_block"  >
             {{ block.settings.richtext_bottom }}
           </li>
-        {% endif %}
-      {% endif %}
+        {%- endif  -%}
+      {%- endif  -%}
       </div>
-    {% endfor %}
+    {%- endfor  -%}
   </ul>
-{% endif %}
+{%- endif  -%}
 
-{% schema %}
+{%- schema  -%}
 
 {
   "name": "Mega menu 1",
@@ -419,4 +419,4 @@
   }
 }
 
-{% endschema %}
+{%- endschema  -%}

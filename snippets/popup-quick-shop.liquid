@@ -6,13 +6,13 @@
                   columns
                   gallery-wrap
                   js-gallery-wrap
-                  {% if settings.quick_shop_product_thumbs %}
+                  {%- if settings.quick_shop_product_thumbs  -%}
                     {{ settings.quick_shop_thumbnail_position }}
-                  {% endif %}
+                  {%- endif  -%}
                   gallery-arrows--{{ settings.quick_shop_gallery_arrows }}
-                  {% if section.settings.product_thumbs %}
+                  {%- if section.settings.product_thumbs  -%}
                     {{ section.settings.thumbnail_position }}
-                  {% endif %}
+                  {%- endif  -%}
                   ">
         <div class="gallery
                     product_gallery
@@ -20,16 +20,16 @@
                     product-{{ product.id }}-gallery
                     transparentBackground--{{ settings.slideshow_button_style }}
                     slideshow_animation--{{ settings.quick_shop_slideshow_animation }}
-                    {% if settings.quick_shop_product_images_position == 'right' %}
+                    {%- if settings.quick_shop_product_images_position == 'right'  -%}
                       align-gallery-right
-                    {% endif %}
+                    {%- endif  -%}
                     "
             data-zoom="{{ settings.quick_shop_zoom }}">
         </div>
-        {% if settings.quick_shop_product_thumbs %}
+        {%- if settings.quick_shop_product_thumbs  -%}
           <div class="gallery product_gallery_nav js-gallery-carousel product_gallery_nav--{{ settings.quick_shop_thumbnail_position }}">
           </div>
-        {% endif %}
+        {%- endif  -%}
       </div>
 
       <div class="quick-shop__text-wrap six columns text-modal-wrap">
@@ -39,11 +39,11 @@
       <div class="new_banner_product js-new-banner"></div>
       <div class="new_banner_product js-pre-order-banner"></div>
 
-        {% if settings.quick_shop_display_vendor %}
+        {%- if settings.quick_shop_display_vendor  -%}
           <p class="vendor">
             <span class="vendor js-product-vendor"></span>
           </p>
-        {% endif %}
+        {%- endif  -%}
         <h3 class="quick-shop__title js-product-title"></h3>
         <div class="feature_divider"></div>
 
@@ -51,38 +51,38 @@
           <span class="sold_out js-sold-out"></span>
           <span class="current_price js-current-price"><span class="money"></span></span>
           <span class="was_price js-was-price"><span class="money"></span></span>
-          {% if settings.quick_shop_display_savings %}
+          {%- if settings.quick_shop_display_savings  -%}
             <span class="sale savings js-savings"></span>
-          {% endif %}
+          {%- endif  -%}
         </p>
         <span class="js-notify-form"></span>
 
-        {% if settings.quick_shop_product_description_position == "top" %}
-          {% if settings.quick_shop_full_description %}
+        {%- if settings.quick_shop_product_description_position == "top"  -%}
+          {%- if settings.quick_shop_full_description  -%}
             <span class="js-full-description clearfix"></span>
             <span class="js-product-details"></span>
-          {% else %}
+          {%- else  -%}
             <p>
               <span class="js-regular-description"></span>
               <span class="js-product-details"></span>
             </p>
-          {% endif %}
-        {% endif %}
+          {%- endif  -%}
+        {%- endif  -%}
 
         <span class="js-product-form"></span>
 
-        {% if settings.quick_shop_product_description_position == "bottom" %}
-          {% if settings.quick_shop_full_description %}
+        {%- if settings.quick_shop_product_description_position == "bottom"  -%}
+          {%- if settings.quick_shop_full_description  -%}
             <span class="js-full-description"></span>
             <span class="js-product-details"></span>
 
-          {% else %}
+          {%- else  -%}
             <p>
               <span class="js-regular-description"></span>
               <span class="js-product-details"></span>
             </p>
-          {% endif %}
-        {% endif %}
+          {%- endif  -%}
+        {%- endif  -%}
       </div>
     </div>
   </div>

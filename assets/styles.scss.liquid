@@ -504,22 +504,22 @@ body {
   font-smoothing: antialiased;
 
   background-color: {{ settings.shop_bg_color }};
-  {% if settings.custom_bg != nil %}
+  {%- if settings.custom_bg != nil  -%}
     background-image: url("{{ settings.custom_bg | img_url: '2000x' }}");
-    {% if settings.bg_stretched %}
+    {%- if settings.bg_stretched  -%}
       background-repeat:no-repeat;
       background-attachment:fixed;
       -webkit-background-size:cover;
       -moz-background-size:cover;
       -o-background-size:cover;
       background-size:cover;
-    {% else %}
+    {%- else  -%}
       background-repeat:{{ settings.repeat_bg }};
-      {% if settings.bg_fixed %}
+      {%- if settings.bg_fixed  -%}
         background-attachment:fixed;
-      {% endif %}
-    {% endif %}
-  {% endif %}
+      {%- endif  -%}
+    {%- endif  -%}
+  {%- endif  -%}
 }
 
 body.blocked-scroll {
@@ -557,7 +557,7 @@ abbr {
 
 /* Lazyloading styles */
 
-{% if settings.image_loading_style == 'appear' %}
+{%- if settings.image_loading_style == 'appear'  -%}
 
   .transition--appear {
     opacity: 0;
@@ -568,7 +568,7 @@ abbr {
     }
   }
 
-{% elsif settings.image_loading_style == 'fade-in' %}
+{%- elsif settings.image_loading_style == 'fade-in'  -%}
 
   .transition--fade-in {
     opacity: 0;
@@ -578,7 +578,7 @@ abbr {
     }
   }
 
-{% elsif settings.image_loading_style == 'blur-up' %}
+{%- elsif settings.image_loading_style == 'blur-up'  -%}
 
   .transition--blur-up {
     -webkit-backface-visibility: hidden;
@@ -594,7 +594,7 @@ abbr {
     }
   }
 
-{% elsif settings.image_loading_style == 'color' %}
+{%- elsif settings.image_loading_style == 'color'  -%}
 
   .transition--color {
     opacity: 0;
@@ -608,11 +608,11 @@ abbr {
     background: transparent !important; //Prevents background showing on pngs that might have transparency
   }
 
-{% elsif settings.image_loading_style == 'none' %}
+{%- elsif settings.image_loading_style == 'none'  -%}
 
 //loads nothing
 
-{% endif %}
+{%- endif  -%}
 
 img[data-sizes="auto"].lazyloaded {
   height: auto;
@@ -1254,9 +1254,9 @@ $breakpoint-has-push: ();
   font-size: {{ settings.logo_font_size }}px;
   text-transform: {{ settings.logo_font_style }};
   line-height: 1.2em;
-  {% if settings.use_logo %}
+  {%- if settings.use_logo  -%}
     line-height: 0;
-  {% endif %}
+  {%- endif  -%}
 }
 
 /*  Headings  */
@@ -1481,11 +1481,11 @@ small {
   }
 }
 
-{% if settings.featured_links_style == blank %}
+{%- if settings.featured_links_style == blank  -%}
   #featured_links .column, #featured_links .columns {
     opacity: 1;
   }
-{% endif %}
+{%- endif  -%}
 
 //Add default spacing to allow room for stars (from Shopify review app)
 .slider-gallery .shopify-product-reviews-badge {
@@ -1507,7 +1507,7 @@ div#shopry-review-photos a { display: block !important; }
 
 //Feature divider variables
 $borderWidth: {{ settings.headline_border }}px;
-$borderWidthHr: {% if settings.headline_border == '4' %}4px{% elsif settings.headline_border == '1' %}1px{% else %}0{% endif %};
+$borderWidthHr: {%- if settings.headline_border == '4'  -%}4px{%- elsif settings.headline_border == '1'  -%}1px{%- else  -%}0{%- endif  -%};
 $borderStyle: {{ settings.divider_style }};
 
 .feature_divider {
@@ -1781,7 +1781,7 @@ body.is-active {
   pointer-events: none;
   text-align: left;
   width: 270px;
-  @include background-opacity({{ settings.header_bg_color }}, {% if settings.transparent_header %}0.9{% else %}1{% endif %});
+  @include background-opacity({{ settings.header_bg_color }}, {%- if settings.transparent_header  -%}0.9{%- else  -%}1{%- endif  -%});
   li {
     padding: 0 20px;
     display: block;
@@ -1818,7 +1818,7 @@ body.is-active {
   transition: opacity 5s ease-in;
   pointer-events: none;
   width: 270px;
-  @include background-opacity({{ settings.header_bg_color }}, {% if settings.transparent_header %}0.9{% else %}1{% endif %});
+  @include background-opacity({{ settings.header_bg_color }}, {%- if settings.transparent_header  -%}0.9{%- else  -%}1{%- endif  -%});
   li {
     padding: 0 20px;
     display: block;
@@ -1937,7 +1937,7 @@ body.is-active {
 .feature_image.editor-hover--true {
   .main_nav,
   .dropdown {
-    @include background-opacity({{ settings.header_bg_color }}, {% if settings.transparent_header %}0.9{% else %}1{% endif %});
+    @include background-opacity({{ settings.header_bg_color }}, {%- if settings.transparent_header  -%}0.9{%- else  -%}1{%- endif  -%});
     clear: both;
     transition: all 0.3s linear;
     animation: fadeIn 0.3s linear none;
@@ -1982,18 +1982,18 @@ body.is-active {
 
 .main_nav,
 .dropdown {
-  @include background-opacity({{ settings.header_bg_color }}, {% if settings.transparent_header %}0.9{% else %}1{% endif %});
+  @include background-opacity({{ settings.header_bg_color }}, {%- if settings.transparent_header  -%}0.9{%- else  -%}1{%- endif  -%});
   clear: both;
   transition: all 0.3s linear;
   animation: fadeIn 0.3s linear none;
 }
 
-{% if settings.header_background == false %}
+{%- if settings.header_background == false  -%}
   .feature_image .main_nav,
   .feature_image .dropdown {
     background: transparent;
   }
-{% endif %}
+{%- endif  -%}
 
 .sticky_nav {
   position: fixed;
@@ -2139,9 +2139,9 @@ select.currencies {
 .feature_image .header .menu a:visited,
 .feature_image .header .menu a span {
   color: {{ settings.nav_color_home }};
-  {% if settings.nav_shadow %}
+  {%- if settings.nav_shadow  -%}
     text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
-  {% endif %}
+  {%- endif  -%}
 }
 
 .feature_image .header .menu a[href]:hover,
@@ -2257,11 +2257,11 @@ a.mini_cart span,
 }
 
 .nav a.mini_cart {
-  {% if settings.search_enabled %}
+  {%- if settings.search_enabled  -%}
     margin-left: 10px;
-  {% else %}
+  {%- else  -%}
     margin-left: 15px;
-  {% endif %}
+  {%- endif  -%}
 }
 
 .top_bar a.mini_cart span {
@@ -2380,7 +2380,7 @@ html.touchevents .cart .cart_container {
   left: 1px;
 }
 
-{% if settings.button_style == 'pill_shaped' %}
+{%- if settings.button_style == 'pill_shaped'  -%}
   .product-quantity-box .product-plus {
     -webkit-border-top-right-radius: 50%;
     -webkit-border-bottom-right-radius: 50%;
@@ -2397,7 +2397,7 @@ html.touchevents .cart .cart_container {
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
   }
-{% elsif settings.button_style == 'rounded' %}
+{%- elsif settings.button_style == 'rounded'  -%}
   .product-quantity-box .product-plus {
     -webkit-border-top-right-radius: 3px;
     -webkit-border-bottom-right-radius: 3px;
@@ -2414,7 +2414,7 @@ html.touchevents .cart .cart_container {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
-{% endif %}
+{%- endif  -%}
 
 .cart_container.active_link .mini_cart,
 .cart_container.active_link .mini_cart span {
@@ -2693,7 +2693,7 @@ select.currencies:active {
 }
 
 select.currencies option {
-  @include background-opacity({{ settings.header_bg_color }}, {% if settings.transparent_header %}{% if settings.header_bg_color == "#ffffff" %}0.9{% else %}0.6{% endif %}{% else %}1{% endif %});
+  @include background-opacity({{ settings.header_bg_color }}, {%- if settings.transparent_header  -%}{%- if settings.header_bg_color == "#ffffff"  -%}0.9{%- else  -%}0.6{%- endif  -%}{%- else  -%}1{%- endif  -%});
   color: {{ settings.nav_color }};
 }
 
@@ -2933,9 +2933,9 @@ ul.toggle_list li ul {
     box-sizing: border-box;
     width: 20px;
     height: 20px;
-    {% if settings.swatch_style != 'square' %}
+    {%- if settings.swatch_style != 'square'  -%}
       border-radius: 50%;
-    {% endif %}
+    {%- endif  -%}
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -3083,9 +3083,9 @@ ul.toggle_list li ul {
     width: 100%;
   }
   .collection-info__caption {
-    {% if settings.thumbnail_hover_enabled == false %}
+    {%- if settings.thumbnail_hover_enabled == false  -%}
       display: block;
-    {% endif %}
+    {%- endif  -%}
     margin-top: 20px;
     @include respond-to('medium-down'){
       display: block;
@@ -3093,7 +3093,7 @@ ul.toggle_list li ul {
     }
   }
 
-  {% if settings.thumbnail_hover_enabled %}
+  {%- if settings.thumbnail_hover_enabled  -%}
 
     .product-wrap {
       text-align: center;
@@ -3135,7 +3135,7 @@ ul.toggle_list li ul {
       }
     }
 
-  {% endif %}
+  {%- endif  -%}
 }
 
 .blog-header {
@@ -3399,13 +3399,13 @@ a.button,
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
-    {% if settings.button_style == 'rounded' %}
+    {%- if settings.button_style == 'rounded'  -%}
       border-radius: 3px;
-    {% elsif settings.button_style == 'pill_shaped' %}
+    {%- elsif settings.button_style == 'pill_shaped'  -%}
       border-radius: 100px;
-    {% else %}
+    {%- else  -%}
       border-radius: 0;
-    {% endif %}
+    {%- endif  -%}
   }
 
   .ie {
@@ -3464,9 +3464,9 @@ a.button,
   button.action_button {
     display: inline-block;
 
-    {% if settings.button_style == 'pill_shaped' %}
+    {%- if settings.button_style == 'pill_shaped'  -%}
       border-radius: 100px;
-    {% endif %}
+    {%- endif  -%}
   }
 
   /* Animation for checkmark on add to cart button */
@@ -3620,13 +3620,13 @@ a.button,
 
 
   div.shopify-payment-button__button {
-    {% if settings.button_style == 'rounded' %}
+    {%- if settings.button_style == 'rounded'  -%}
       border-radius: 3px;
-    {% elsif settings.button_style == 'pill_shaped' %}
+    {%- elsif settings.button_style == 'pill_shaped'  -%}
       border-radius: 100px;
-    {% else %}
+    {%- else  -%}
       border-radius: 0;
-    {% endif %}
+    {%- endif  -%}
   }
 
   .shopify-payment-button__button--branded,
@@ -4019,9 +4019,9 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    {% if settings.button_style != 'square' %}
+    {%- if settings.button_style != 'square'  -%}
       border-radius: 3px;
-    {% endif %}
+    {%- endif  -%}
     @include respond-to('small-down') {
       font-size: 16px;
     }
@@ -4051,16 +4051,16 @@ select::-ms-expand {
 select {
   background: #fff url({{ "select.png" | asset_url }}) no-repeat 96% 50%;
   background-size: 18px 12px;
-  {% if settings.button_style != 'square' %}
+  {%- if settings.button_style != 'square'  -%}
     padding: 8px 14px 8px;
     border-radius: 3px;
-  {% elsif settings.button_style == 'pill_shaped'  %}
+  {%- elsif settings.button_style == 'pill_shaped'   -%}
     padding: 8px 16px 8px;
     border-radius: 100px;
-  {% else %}
+  {%- else  -%}
     padding: 8px 14px 8px;
     border-radius: 0;
-  {% endif %}
+  {%- endif  -%}
   border: 1px solid #d9dbdc;
   -webkit-appearance: none;
   -ms-appearance: none;
@@ -4245,7 +4245,7 @@ input[type="button"].get-rates.action_button {
   font-size: 15px;
   white-space: nowrap;
 
-  {% if settings.banner_style == 'round' %}
+  {%- if settings.banner_style == 'round'  -%}
     border-radius: 50%;
     width: 70px;
     height: 70px;
@@ -4259,7 +4259,7 @@ input[type="button"].get-rates.action_button {
       height: 50px;
       line-height: 50px;
     }
-  {% endif %}
+  {%- endif  -%}
 }
 
 .sale_banner_product {
@@ -4321,11 +4321,11 @@ input[type="button"].get-rates.action_button {
     border: solid 1px #e2e2e2;
     display: inline-block;
     transition: all 500ms ease 0s;
-    {% if settings.button_style != "square" %}
+    {%- if settings.button_style != "square"  -%}
       border-radius: 100px;
       width: 44px;
       height: 44px;
-    {% endif %}
+    {%- endif  -%}
 
   }
 }
@@ -4514,15 +4514,15 @@ input[type="button"].get-rates.action_button {
   width: 100%;
   max-width: 740px;
   padding: 0;
-  {% if settings.use_newsletter_border == true %}
+  {%- if settings.use_newsletter_border == true  -%}
     border: 5px solid {{ settings.border_color }};
-  {% endif %}
+  {%- endif  -%}
 }
 
 .newsletter__lightbox .fancybox-close-small {
-  {% if settings.newsletter_popup_image_align == 'right' %}
+  {%- if settings.newsletter_popup_image_align == 'right'  -%}
     left: 0;
-  {% endif %}
+  {%- endif  -%}
   @include respond-to('small-down') {
     display: block;
   }
@@ -4531,9 +4531,9 @@ input[type="button"].get-rates.action_button {
       fill: white;
     }
   }
-  {% if settings.newsletter_popup_close == false %}
+  {%- if settings.newsletter_popup_close == false  -%}
     display: none;
-  {% endif %}
+  {%- endif  -%}
 }
 
 .newsletter__lightbox .fancybox-toolbar {
@@ -4542,9 +4542,9 @@ input[type="button"].get-rates.action_button {
 
 .newsletter-popup {
   @include flexbox();
-  {% if settings.newsletter_popup_image_align == 'right' %}
+  {%- if settings.newsletter_popup_image_align == 'right'  -%}
     @include flex-direction(row-reverse);
-  {% endif %}
+  {%- endif  -%}
   background-color: {{ settings.newsletter_popup_background_color }};
   padding: 0;
   width: 100%;
@@ -4686,14 +4686,14 @@ input[type="button"].get-rates.action_button {
     margin-top: 10px;
     margin-bottom: 0;
 
-    {% if settings.newsletter_popup_text_align == 'left' %}
+    {%- if settings.newsletter_popup_text_align == 'left'  -%}
       margin-right: 15px;
-    {% elsif settings.newsletter_popup_text_align == 'right' %}
+    {%- elsif settings.newsletter_popup_text_align == 'right'  -%}
       margin-left: 15px;
-    {% else %}
+    {%- else  -%}
       margin-left: 8px;
       margin-right: 8px;
-    {% endif %}
+    {%- endif  -%}
 
     &:hover,
     &.highlight-true {
@@ -4807,7 +4807,7 @@ input[type="button"].get-rates.action_button {
 /* #Tables
 ================================================== */
 
-{% if settings.table_styles_enabled %}
+{%- if settings.table_styles_enabled  -%}
     table{width:100%;}
     table th{font-weight:700;background:#f9f9f9;text-align:left}
     table th,table td{padding:4px}
@@ -4816,7 +4816,7 @@ input[type="button"].get-rates.action_button {
     table td,table th{border-right:1px solid #DCDCDC}
     table td:first-child,table th:first-child{border-left:1px solid #DCDCDC}
     table .em{font-weight:700;}
-{% endif %}
+{%- endif  -%}
 
 table tr.order_summary td.label { text-align: right;}
 table { margin-bottom: 20px;}
@@ -5708,12 +5708,12 @@ span.item-pricing {
       z-index: 900;
     }
     input {
-      {% if settings.button_style == 'rounded' %}
+      {%- if settings.button_style == 'rounded'  -%}
         border-radius: 3px;
-      {% elsif settings.button_style == 'pill_shaped' %}
+      {%- elsif settings.button_style == 'pill_shaped'  -%}
         border-radius: 100px;
         padding-left: 15px;
-      {% endif %}
+      {%- endif  -%}
     }
   }
 }
@@ -5837,14 +5837,14 @@ span.item-pricing {
   border-color: transparent;
   color: white;
   font-size: 24px;
-  {% if settings.button_style == 'square' %}
+  {%- if settings.button_style == 'square'  -%}
     border-radius: 0px;
-  {% else %}
+  {%- else  -%}
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-  {% endif %}
+  {%- endif  -%}
   &:hover {
     color: white;
     background-color: darken({{ settings.border_color }}, 20%);
@@ -5992,11 +5992,11 @@ a.tag {
   margin: 10px 5px;
   padding: 0.5rem 1rem;
   display: inline-block;
-  {% if settings.button_style == 'rounded' %}
+  {%- if settings.button_style == 'rounded'  -%}
     border-radius: 3px;
-  {% elsif settings.button_style == 'pill_shaped' %}
+  {%- elsif settings.button_style == 'pill_shaped'  -%}
     border-radius: 50%;
-  {% endif %}
+  {%- endif  -%}
   &:hover {
     color: #fff;
     background-color: {{ settings.link_hover_color }};
@@ -6092,16 +6092,16 @@ a.tag {
   }
 
 //Do not display thumbnail hover background if user picks none
-{% assign product_hover_bg = settings.product_hover_bg_color | color_extract: 'alpha' %}
+{%- assign product_hover_bg = settings.product_hover_bg_color | color_extract: 'alpha'  -%}
 
- {% if product_hover_bg != 0 %}
+ {%- if product_hover_bg != 0  -%}
   .thumbnail-overlay {
       background-color: {{ settings.product_hover_bg_color | color_modify: 'alpha', 0.7 }};
   }
- {% endif %}
+ {%- endif  -%}
 
 
-  {% if settings.banner_style == 'round' %}
+  {%- if settings.banner_style == 'round'  -%}
     .thumbnail_banner {
       border-radius: 50%;
       width: 70px;
@@ -6121,7 +6121,7 @@ a.tag {
         line-height: 50px;
       }
     }
-  {% endif %}
+  {%- endif  -%}
   img {
     vertical-align: bottom;
     transition: opacity .3s ease-in;
@@ -6129,9 +6129,9 @@ a.tag {
     @include object-fit(contain, top center);
   }
   .product-info__caption {
-    {% if settings.thumbnail_hover_enabled == false %}
+    {%- if settings.thumbnail_hover_enabled == false  -%}
       display: block;
-    {% endif %}
+    {%- endif  -%}
     margin-top: 20px;
     @include respond-to('medium-down'){
       display: block;
@@ -6167,7 +6167,7 @@ a.tag {
 }
 
 // Swap to second image on hover
-{% if settings.collection_secondary_image %}
+{%- if settings.collection_secondary_image  -%}
   .swap-true {
     img.secondary,
     img.secondary.lazyloaded {
@@ -6215,11 +6215,11 @@ a.tag {
     display: none;
     width: auto;
   }
-{% endif %}
+{%- endif  -%}
 
 /* Thumbnail overlay */
 
-{% assign quick_shop_hover_bg = settings.product_hover_bg_color | color_extract: 'alpha' %}
+{%- assign quick_shop_hover_bg = settings.product_hover_bg_color | color_extract: 'alpha'  -%}
 
 .quick_shop,
 .view_all {
@@ -6245,23 +6245,23 @@ a.tag {
   -ms-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out,color 0.3s linear, background-color 0.3s linear;
-  {% if settings.button_style == 'rounded' %}
+  {%- if settings.button_style == 'rounded'  -%}
     border-radius: 3px;
-  {% elsif settings.button_style == 'pill_shaped' %}
+  {%- elsif settings.button_style == 'pill_shaped'  -%}
     border-radius: 100px;
-  {% endif %}
+  {%- endif  -%}
   &:hover {
-    {% if quick_shop_hover_bg == 0 %}
+    {%- if quick_shop_hover_bg == 0  -%}
       background-color: {{ settings.product_hover_text_color }};
       color: set-text-color({{ settings.product_hover_text_color }});
-    {% else %}
+    {%- else  -%}
       color: {{ settings.product_hover_bg_color | color_to_hex }};
       background-color: {{ settings.product_hover_text_color }};
-    {% endif %}
+    {%- endif  -%}
   }
 }
 
-{% if settings.thumbnail_hover_enabled %}
+{%- if settings.thumbnail_hover_enabled  -%}
 
   .product-wrap {
     position: relative;
@@ -6319,7 +6319,7 @@ a.tag {
       color: {{ settings.was_price_color }};
     }
   }
-{% endif %}
+{%- endif  -%}
 .thumbnail {
 
   .price span.money {
@@ -6336,7 +6336,7 @@ a.tag {
   }
 }
 
-{% if settings.thumbnail_hover_enabled == blank and settings.quick_shop_enabled %}
+{%- if settings.thumbnail_hover_enabled == blank and settings.quick_shop_enabled  -%}
 
 .product-wrap {
   position: relative;
@@ -6364,7 +6364,7 @@ a.tag {
   }
 }
 
-{% endif %}
+{%- endif  -%}
 
 /* Product banners */
 
@@ -6376,7 +6376,7 @@ a.tag {
   font-size: 12px;
 }
 
-{% if settings.align_height %}
+{%- if settings.align_height  -%}
 
   .product-list,
   .slider-gallery {
@@ -6388,7 +6388,7 @@ a.tag {
     }
   }
 
-{% endif %}
+{%- endif  -%}
 
 .thumbnail .sold_out, .sold_out {
   font-weight: bold;
@@ -6754,12 +6754,12 @@ body.article { padding-bottom: 0 }
 
   input {
     width: 100%;
-    {% if settings.button_style == 'rounded' %}
+    {%- if settings.button_style == 'rounded'  -%}
       border-radius: 3px;
-    {% elsif settings.button_style == 'pill_shaped' %}
+    {%- elsif settings.button_style == 'pill_shaped'  -%}
       border-radius: 100px;
       padding-left: 15px;
-    {% endif %}
+    {%- endif  -%}
   }
 }
 
@@ -6901,7 +6901,7 @@ $swatch-label-size: 34px;
 
 .selector-wrapper label {margin-bottom: 0.5em;}
 
-{% if settings.product_form_style == "swatches" %}
+{%- if settings.product_form_style == "swatches"  -%}
 
   .product_section .product_form {
     opacity: 0;
@@ -6951,9 +6951,9 @@ $swatch-label-size: 34px;
     border: #e2e2e2 1px solid;
     min-width: $swatch-element-size;
     min-height: $swatch-element-size;
-    {% if settings.swatch_style != 'square' %}
+    {%- if settings.swatch_style != 'square'  -%}
       border-radius: 3px;
-    {% endif %}
+    {%- endif  -%}
   }
 
   .swatch-element.color {
@@ -6961,9 +6961,9 @@ $swatch-label-size: 34px;
   }
 
   .swatch-element.color, .swatch-element.color label {
-    {% if settings.swatch_style != 'square' %}
+    {%- if settings.swatch_style != 'square'  -%}
       border-radius: 50%;
-    {% endif %}
+    {%- endif  -%}
     border: #e2e2e2 1px solid;
   }
 
@@ -7000,9 +7000,9 @@ $swatch-label-size: 34px;
 
   .swatch .swatch-element .crossed-out { display:none; }
   .swatch .swatch-element.soldout .crossed-out {
-    {% if settings.swatch_style != 'square' %}
+    {%- if settings.swatch_style != 'square'  -%}
       border-radius: 50%;
-    {% endif %}
+    {%- endif  -%}
     display:block;
     height: 100%;
     width: 100%;
@@ -7078,9 +7078,9 @@ $swatch-label-size: 34px;
          -o-transform:translateY(0px);
             transform:translateY(0px);
   }
-{% endif %}
+{%- endif  -%}
 
-{% if settings.collection_swatches %}
+{%- if settings.collection_swatches  -%}
   .collection_swatches {
     margin: 10px 0 5px 0;
   }
@@ -7099,16 +7099,16 @@ $swatch-label-size: 34px;
     float: none;
     display: inline-block;
     border: #e2e2e2 1px solid;
-    {% if settings.swatch_style != 'square' %}
+    {%- if settings.swatch_style != 'square'  -%}
       border-radius: 50%;
-    {% endif %}
+    {%- endif  -%}
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     background-position: center;
     background-size: cover;
   }
-{% endif %}
+{%- endif  -%}
 
 //Fancybox
 
@@ -7242,9 +7242,9 @@ $swatch-label-size: 34px;
   cursor: pointer;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  {% if settings.slideshow_button_style %}
+  {%- if settings.slideshow_button_style  -%}
     background-color: hsla(0, 0%, 100%, 0.25);
-  {% endif %}
+  {%- endif  -%}
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7265,9 +7265,9 @@ $swatch-label-size: 34px;
 }
 
 .fancybox-nav:hover {
-  {% if settings.slideshow_button_style %}
+  {%- if settings.slideshow_button_style  -%}
     background-color: hsla(0, 0%, 100%, 0.5);
-  {% endif %}
+  {%- endif  -%}
 }
 
 .fancybox-nav span {
@@ -7293,12 +7293,12 @@ $swatch-label-size: 34px;
   background-color: {{ settings.sub_footer_color }};
   background-position: center center;
   color: {{ settings.sub_footer_text_color }};
-  {% if settings.footer_bg != nil %}
+  {%- if settings.footer_bg != nil  -%}
     background-image: url("{{ settings.footer_bg | img_url: '1400x' }}");
-    {% if settings.footer_bg_stretched %}
+    {%- if settings.footer_bg_stretched  -%}
       background-size:cover;
-    {% endif %}
-  {% endif %}
+    {%- endif  -%}
+  {%- endif  -%}
 
   .input-row {
     @include flex-direction(column);
@@ -7624,7 +7624,7 @@ $promoBannerHeight: 30px;
 
 $topMenuHeight: 40px;
 
-{% if settings.header_background == false %}
+{%- if settings.header_background == false  -%}
 
   .page_banner + #pagecontent {
     padding-bottom: 0;
@@ -7654,7 +7654,7 @@ $topMenuHeight: 40px;
     }
   }
 
-{% endif %}
+{%- endif  -%}
 
 @include respond-to('medium-down'){
 
@@ -8064,9 +8064,9 @@ span.main-title {
 .quick-shop__lightbox .fancybox-content {
   width: 90%;
   max-width: 900px;
-  {% if settings.use_newsletter_border == true %}
+  {%- if settings.use_newsletter_border == true  -%}
     border: 5px solid {{ settings.border_color }};
-  {% endif %}
+  {%- endif  -%}
   background-color: {{ settings.modal_background_color }};
   cursor: pointer !important;
 }
@@ -8690,10 +8690,10 @@ html.remodal-is-locked {
       text-align: center;
     }
 
-    {% if settings.product_thumbs == false %}
+    {%- if settings.product_thumbs == false  -%}
       .flex-direction-nav .flex-next {opacity: 0.6; right: 15px;}
       .flex-direction-nav .flex-prev {opacity: 0.6; left: 15px;}
-    {% endif %}
+    {%- endif  -%}
     .is-absolute { top: 0px !important; }
 
     .blog_filter { margin-top: 1em; width: 100% !important; }
@@ -8952,12 +8952,12 @@ form.search_form,
   background-color: transparent;
   padding-right: 35px;
   border-color: {{ settings.nav_color }};
-  {% if settings.button_style == 'rounded' %}
+  {%- if settings.button_style == 'rounded'  -%}
     border-radius: 3px;
-  {% elsif settings.button_style == 'pill_shaped' %}
+  {%- elsif settings.button_style == 'pill_shaped'  -%}
     border-radius: 100px;
     padding-left: 15px;
-  {% endif %}
+  {%- endif  -%}
 }
 
 .feature_image .search_form input,
@@ -9695,11 +9695,11 @@ footer .social_icons a:active, footer .social_icons a:hover {
 .caption {
   width: 100%;
   position: absolute;
-  {% if settings.header_background %}
+  {%- if settings.header_background  -%}
     top: 50%;
-  {% else %}
+  {%- else  -%}
     top: 55%;
-  {% endif %}
+  {%- endif  -%}
   padding: 0 5%;
   @include prefix(transform, translate(0,-50%), ms webkit spec);
   @include respond-to('medium-up') {
@@ -9755,9 +9755,9 @@ footer .social_icons a:active, footer .social_icons a:hover {
     font-size: {{settings.slideshow_subtitle_size}}px;
     letter-spacing: {{settings.slideshow_subtitle_letter_spacing}}px;
     margin-bottom: 10px;
-    {% if settings.slideshow_shadow != blank %}
+    {%- if settings.slideshow_shadow != blank  -%}
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    {% endif %}
+    {%- endif  -%}
     @include respond-to('small-down') {
       font-size: 1.4em;
       color: {{ settings.regular_color }};
@@ -9783,9 +9783,9 @@ footer .social_icons a:active, footer .social_icons a:hover {
     letter-spacing: {{ settings.slideshow_headline_letter_spacing }}px;
     line-height: 1.4em;
     margin-bottom: 15px;
-    {% if settings.slideshow_headline_shadow != blank %}
+    {%- if settings.slideshow_headline_shadow != blank  -%}
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    {% endif %}
+    {%- endif  -%}
 
     @include respond-to('small-down') {
       font-size: 2.6em;
@@ -9811,9 +9811,9 @@ footer .social_icons a:active, footer .social_icons a:hover {
     font-size: {{settings.slideshow_subtitle_size}}px;
     letter-spacing: {{settings.slideshow_subtitle_letter_spacing}}px;
     position: relative;
-    {% if settings.slideshow_shadow != blank %}
+    {%- if settings.slideshow_shadow != blank  -%}
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    {% endif %}
+    {%- endif  -%}
 
     @include respond-to('small-down') {
       font-size: 1.4em;
@@ -9913,7 +9913,7 @@ $backgroundTransparency: 0.6;
 
 .homepage-video {
   .caption-background-true {
-    background-color: rgba({{ settings.banner_background_color }}, {% if settings.video_background_transparency == blank %} 1 {% else %} $backgroundTransparency {% endif %});
+    background-color: rgba({{ settings.banner_background_color }}, {%- if settings.video_background_transparency == blank  -%} 1 {%- else  -%} $backgroundTransparency {%- endif  -%});
     @include respond-to('small-down') {
       background-color: transparent;
     }
@@ -9946,15 +9946,15 @@ a.continue-button {
     background-color: {{ settings.banner_button_color }};
     border-color: {{ settings.banner_button_color }};
 
-    {% if settings.caption_background %}
+    {%- if settings.caption_background  -%}
       color: {{ settings.banner_background_color }};
-    {% else %}
+    {%- else  -%}
       @if (lightness({{ settings.banner_color }}) > 50) {
         color: #333;
       } @else {
         color: #fff;
       }
-    {% endif %}
+    {%- endif  -%}
   }
 
   @include respond-to('small-down') {
@@ -9977,15 +9977,15 @@ a.highlight-true, input[type="button"].highlight-true {
   background-color: {{ settings.banner_button_color }};
   border-color: {{ settings.banner_button_color }};
 
-  {% if settings.caption_background %}
+  {%- if settings.caption_background  -%}
     color: {{ settings.banner_background_color }};
-  {% else %}
+  {%- else  -%}
     @if (lightness({{ settings.banner_button_color }}) > 50) {
       color: #333;
     } @else {
       color: #fff;
     }
-  {% endif %}
+  {%- endif  -%}
 
   @include respond-to('small-down') {
     border-color: {{ settings.regular_color }};
@@ -10033,15 +10033,15 @@ input[type="button"].highlight-false--dark {
   a.highlight-false, input[type="button"].highlight-false,
   a.highlight-true, input[type="button"].highlight-true {
     &:hover {
-      {% if settings.slideshow_text_background %}
+      {%- if settings.slideshow_text_background  -%}
         color: {{ settings.banner_background_color }};
-      {% else %}
+      {%- else  -%}
         @if (lightness({{ settings.banner_color }}) > 50) {
           color: #333;
         } @else {
           color: #fff;
         }
-      {% endif %}
+      {%- endif  -%}
     }
     @include respond-to('small-down') {
       color: {{ settings.regular_color }};
@@ -10063,15 +10063,15 @@ input[type="button"].highlight-false--dark {
     background-color: {{ settings.banner_color }};
     border-color: {{ settings.banner_color }};
 
-    {% if settings.slideshow_text_background %}
+    {%- if settings.slideshow_text_background  -%}
       color: {{ settings.banner_background_color }};
-    {% else %}
+    {%- else  -%}
       @if (lightness({{ settings.banner_color }}) > 50) {
           color: #333;
       } @else {
         color: #fff;
       }
-    {% endif %}
+    {%- endif  -%}
 
     @include respond-to('small-down') {
       border-color: {{ settings.regular_color }};
@@ -10273,9 +10273,9 @@ input[type="button"].highlight-false--dark {
   }
   .gallery-cell {
     width: 100%;
-    {% if settings.image_loading_style != 'color' %}
+    {%- if settings.image_loading_style != 'color'  -%}
       background-color: {{ settings.banner_placeholder_background_color }};
-    {% endif %}
+    {%- endif  -%}
     @include respond-to('small-down') {
       background-color: transparent;
     }
@@ -10631,9 +10631,9 @@ input[type="button"].highlight-false--dark {
       bottom: 0;
       transition: background-color 0.25s linear;
       @include respond-to('medium-down'){
-        {% if settings.featured_promotions_mobile_background %}
+        {%- if settings.featured_promotions_mobile_background  -%}
           @include background-opacity({{ settings.featured_promotions_background }}, 0.5);
-        {% endif %}
+        {%- endif  -%}
       }
     }
     .feature-wrap {
@@ -10697,9 +10697,9 @@ input[type="button"].highlight-false--dark {
     &:hover .feature-overlay {
       @include background-opacity({{ settings.featured_promotions_background }}, 0.5);
       @include respond-to('medium-down'){
-        {% unless settings.featured_promotions_mobile_background %}
+        {%- unless settings.featured_promotions_mobile_background  -%}
           background: transparent;
-        {% endunless %}
+        {%- endunless  -%}
       }
     }
     &.title-overlay-true:hover .title:after {
@@ -10839,9 +10839,9 @@ $delay: 0;
   width: 100%;
   position: relative;
   overflow: hidden;
-  {% if settings.image_loading_style != 'color' %}
+  {%- if settings.image_loading_style != 'color'  -%}
     background-color: {{ settings.banner_placeholder_background_color }};
-  {% endif %}
+  {%- endif  -%}
 
   @include respond-to('small-down') {
     max-height: inherit;
@@ -10881,9 +10881,9 @@ $delay: 0;
   position: relative;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
-  {% if settings.image_loading_style != 'color' %}
+  {%- if settings.image_loading_style != 'color'  -%}
     background-color: {{ settings.banner_placeholder_background_color }};
-  {% endif %}
+  {%- endif  -%}
   @include respond-to('small-down') {
     background-color: transparent;
   }
@@ -10974,9 +10974,9 @@ $delay: 0;
 .page_banner {
   overflow: hidden;
   max-height: 100vh;
-  {% if settings.header_background == false %}
+  {%- if settings.header_background == false  -%}
     margin-top: 40px;
-  {% endif %}
+  {%- endif  -%}
 }
 
 .caption.captionOverlay--true {
@@ -10985,19 +10985,19 @@ $delay: 0;
   right: 0;
   margin: 0 auto;
   position: absolute;
-  {% if settings.header_background %}
+  {%- if settings.header_background  -%}
     top: 50%;
-  {% else %}
+  {%- else  -%}
     top: 55%;
-  {% endif %}
+  {%- endif  -%}
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
   z-index: 3;
   .headline, .subtitle {
     color: {{ settings.banner_color }};
-    {% if settings.slideshow_shadow != blank %}
+    {%- if settings.slideshow_shadow != blank  -%}
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    {% endif %}
+    {%- endif  -%}
   }
   @include respond-to('medium-down'){
     top: 50%;

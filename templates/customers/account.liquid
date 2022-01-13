@@ -1,4 +1,4 @@
-{% paginate customer.orders by 20 %}
+{%- paginate customer.orders by 20  -%}
   <a name="pagecontent" id="pagecontent"></a>
 
   <header class="account-header clearfix">
@@ -17,17 +17,17 @@
       <p class="email note">{{ customer.email }}</p>
       <h4>{{ 'customer.addresses.primary' | t }}</h4>
       <div class="address note">
-        {% if customer.default_address != nil %}
+        {%- if customer.default_address != nil  -%}
           <p>{{ customer.default_address.address1 }}</p>
-          {% if customer.default_address.address2 != "" %}
+          {%- if customer.default_address.address2 != ""  -%}
             <p>{{ customer.default_address.address2 }}</p>
-          {% endif %}
-          <p>{{ customer.default_address.city}}{% if customer.default_address.province_code %}, {{customer.default_address.province_code}}{% endif %} {{ customer.default_address.zip}}</p>
+          {%- endif  -%}
+          <p>{{ customer.default_address.city}}{%- if customer.default_address.province_code  -%}, {{customer.default_address.province_code}}{%- endif  -%} {{ customer.default_address.zip}}</p>
           <p>{{customer.default_address.country}}</p>
           <p>{{ customer.default_address.phone }}</p>
-        {% else %}
+        {%- else  -%}
           <p>{{ 'customer.addresses.no_addresses' | t }}</p>
-        {% endif %}
+        {%- endif  -%}
           <p><a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
       </div>
     </aside>
@@ -35,7 +35,7 @@
       <div id="customer_orders">
         <h4>{{ 'customer.orders.title' | t }}</h4>
 
-        {% if customer.orders.size != 0 %}
+        {%- if customer.orders.size != 0  -%}
         <table width="100%">
           <thead>
             <tr>
@@ -47,8 +47,8 @@
             </tr>
           </thead>
           <tbody>
-            {% for order in customer.orders %}
-              <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+            {%- for order in customer.orders  -%}
+              <tr class="{%- cycle 'odd', 'even'  -%} {%- if order.cancelled  -%}cancelled_order{%- endif  -%}">
                   <td>{{ order.name | link_to: order.customer_url }}</td>
                   <td>{{ order.created_at | date: format: "month_day_year" }}</td>
                   <td>{{ order.financial_status_label }}</td>
@@ -57,15 +57,15 @@
                     <span class="money">{{ order.total_price | money }}</span>
                   </td>
               </tr>
-            {% endfor %}
+            {%- endfor  -%}
           </tbody>
         </table>
-        {% else %}
+        {%- else  -%}
           <p>{{ 'customer.orders.none' | t }}</p>
-        {% endif %}
+        {%- endif  -%}
 
-        {% include 'pagination' with true %}
+        {%- include 'pagination' with true  -%}
       </div>
     </main>
   </div>
-{% endpaginate %}
+{%- endpaginate  -%}

@@ -12,7 +12,7 @@
       <!-- Create Customer -->
       <div id="create-customer">
 
-        {% form 'create_customer' %}
+        {%- form 'create_customer'  -%}
           {{ form.errors | default_errors }}
 
           <div id="first_name" class="clearfix large_form">
@@ -35,9 +35,9 @@
             <input type="password" value="" name="customer[password]" id="password" class="large password" size="30" />
           </div>
 
-          {% if section.settings.text %}
+          {%- if section.settings.text  -%}
             {{ section.settings.text }}
-          {% endif %}
+          {%- endif  -%}
 
           <div class="acceptsMarketing">
             <input type="checkbox" id="customer[accepts_marketing]" name="customer[accepts_marketing]">
@@ -51,13 +51,13 @@
             </p>
           </div>
 
-        {% endform %}
+        {%- endform  -%}
       </div><!-- /#create-customer -->
     </div>
   </div>
 </div>
 
-{% schema %}
+{%- schema  -%}
   {
     "name": "Register",
     "class": "register-section",
@@ -69,4 +69,4 @@
       }
     ]
   }
-{% endschema %}
+{%- endschema  -%}

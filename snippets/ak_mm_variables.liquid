@@ -23,13 +23,13 @@
     ak_mm.enforcement_status={{shop.metafields.ak_mm_minmax.enforcement_status}};
   }
 </script>
-{% assign productMinMaxMeta = product.metafields.ak_mm_minmax %}
-{% assign pid = product.id %}
+{%- assign productMinMaxMeta = product.metafields.ak_mm_minmax  -%}
+{%- assign pid = product.id  -%}
 
 {%- for field in productMinMaxMeta -%}
-{% assign key = field | first %}
-{% assign realMinKey="ak_p_miQ_"|append: pid %}
-{% assign realMaxKey="ak_p_maQ_"|append: pid %}
+{%- assign key = field | first  -%}
+{%- assign realMinKey="ak_p_miQ_"|append: pid  -%}
+{%- assign realMaxKey="ak_p_maQ_"|append: pid  -%}
 
 <script>
   var pid="{{field | first}}";
@@ -38,27 +38,27 @@
 </script>
 
 
-{% if key == realMinKey %}
+{%- if key == realMinKey  -%}
 <script>
   ak_mm.product_min_qty="{{ field | last }}";
 </script>
-{% endif %}
-{% if key == realMaxKey %}
+{%- endif  -%}
+{%- if key == realMaxKey  -%}
 <script>
   ak_mm.product_max_qty="{{ field | last }}";
 </script>
-{% endif %}
+{%- endif  -%}
 
 
 
 {%- endfor -%}
 
 {%- for item in cart.items -%}
-{% assign pid = item.id %}
+{%- assign pid = item.id  -%}
 
-{% assign realMinKey="ak_p_miQ_"|append: item.product_id %}
-{% assign realMaxKey="ak_p_maQ_"|append: item.product_id %}
-{% assign instructions = product.metafields.ak_mm_minmax %}
+{%- assign realMinKey="ak_p_miQ_"|append: item.product_id  -%}
+{%- assign realMaxKey="ak_p_maQ_"|append: item.product_id  -%}
+{%- assign instructions = product.metafields.ak_mm_minmax  -%}
 <script>
   var cartObj={};
 
@@ -86,11 +86,11 @@
   window.jQuery || document.write('<script src="//code.jquery.com/jquery-3.3.1.min.js"><\/script>');
 </script>
 
-{% assign metaValue= shop.metafields.ak_mm_minmax.enforcement_status %}
+{%- assign metaValue= shop.metafields.ak_mm_minmax.enforcement_status  -%}
 
-{% if metaValue == "1" %} 
+{%- if metaValue == "1"  -%} 
 {{ 'ak_mm_swal.js'  | asset_url | script_tag}}
-{% comment %}
+{%- comment  -%}
 {{ 'ak_mm_amtQty.js'  | asset_url | script_tag}}
-{% endcomment %}
-{% endif %}
+{%- endcomment  -%}
+{%- endif  -%}

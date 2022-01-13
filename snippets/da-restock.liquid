@@ -1,24 +1,24 @@
-{% assign alwaysShow = shop.metafields.da-restock.alwaysShow %}
-{% assign displayForm = product.metafields.da-restock.hide %}
+{%- assign alwaysShow = shop.metafields.da-restock.alwaysShow  -%}
+{%- assign displayForm = product.metafields.da-restock.hide  -%}
 <script type="text/javascript">
   var da_variant = {{ product.selected_or_first_available_variant.id }};
 </script>
 
-{% if alwaysShow == "true" and displayForm != "false" %}
-    {% assign show = false %}
-    {% assign multipleVariants = false %}
+{%- if alwaysShow == "true" and displayForm != "false"  -%}
+    {%- assign show = false  -%}
+    {%- assign multipleVariants = false  -%}
 
-    {% if product.variants.size > 1 %}
-            {% assign multipleVariants = true %}
-    {% endif %}
+    {%- if product.variants.size > 1  -%}
+            {%- assign multipleVariants = true  -%}
+    {%- endif  -%}
 
-    {% for variant in product.variants %}
-        {% unless variant.available %}
-            {% assign show = true %}
-        {% endunless %}
-    {% endfor %}
+    {%- for variant in product.variants  -%}
+        {%- unless variant.available  -%}
+            {%- assign show = true  -%}
+        {%- endunless  -%}
+    {%- endfor  -%}
 
-    {% if show %}
+    {%- if show  -%}
     <div id=dd-restock-notification-container>
         <div id=dd-restock-notification-msg>
                 <div id=dd-restock-notification-msg-success style="display: none">{{shop.metafields.da-restock.success}}</div>
@@ -28,17 +28,17 @@
             <form action='' method='post'>                        
                 <p>{{shop.metafields.da-restock.productText}}</p>
 
-                    {% if multipleVariants %}
+                    {%- if multipleVariants  -%}
                     <select name="variant">                          
-                            {% for variant in product.variants %}
-                            {% unless variant.available %}
+                            {%- for variant in product.variants  -%}
+                            {%- unless variant.available  -%}
                                     <option value={{ variant.id }}>{{ variant.title }} </option>
-                            {% endunless %}
-                            {% endfor %}
+                            {%- endunless  -%}
+                            {%- endfor  -%}
                     </select>
-                    {% else %}
+                    {%- else  -%}
                             <input type=hidden name=variant value={{product.variants[0].id}} />
-                    {% endif %}                     
+                    {%- endif  -%}                     
                 <input type=text placeholder='{{shop.metafields.da-restock.productInput}}' name=email />
                 <input type=hidden name=store value={{shop.permanent_domain}} />
                 <input type=hidden name=product value={{product.id}} />
@@ -47,16 +47,16 @@
             </form>
         </div>
     </div>
-    {% endif %}
+    {%- endif  -%}
 
-{% elsif displayForm != "false" %}
+{%- elsif displayForm != "false"  -%}
     <div id=dd-restock-notification-container>
             <div id=dd-restock-notification-msg>
                 <div id=dd-restock-notification-msg-success style="display: none">{{shop.metafields.da-restock.success}}</div>
                 <div id=dd-restock-notification-msg-error style="display: none">{{shop.metafields.da-restock.error}}</div>
             </div>
-            {% for variant in product.variants %}
-                {% unless variant.available %}
+            {%- for variant in product.variants  -%}
+                {%- unless variant.available  -%}
                     <div class="da-restock-notification" id="da-restock-notification-variant-{{variant.id}}" style="display:none">
                         <form action='' method='post'>
                             <p>{{shop.metafields.da-restock.productText}}</p>
@@ -68,8 +68,8 @@
                             <button class=btn>{{shop.metafields.da-restock.productButton}}</button>
                         </form>
                     </div>
-                {% endunless %}
-            {% endfor %}
+                {%- endunless  -%}
+            {%- endfor  -%}
     </div>
-{% endif %}
+{%- endif  -%}
     

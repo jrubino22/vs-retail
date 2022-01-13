@@ -1,42 +1,42 @@
-{% comment %}
+{%- comment  -%}
 Helper for Wholesale Now (https://apps.shopify.com/wholesale-now)
-{% endcomment %}
+{%- endcomment  -%}
 
 
 <script type="text/javascript">
   window.wn = {};
 
-  {% if customer %}
+  {%- if customer  -%}
     window.wn.customer_tags = "{{customer.tags | join: ','}}";
     window.wn.customer_id = "{{customer.id}}";
-  {% endif %}
+  {%- endif  -%}
 
-  {% if template contains 'product' %}
-    {% unless product.id == blank %}
+  {%- if template contains 'product'  -%}
+    {%- unless product.id == blank  -%}
       window.wn.product = {
         id: {{product.id}},
         price: {{product.price}},
         variants: {{product.variants | json}}
       };
       window.wn.product_collections = []
-      {% for c in product.collections %}
+      {%- for c in product.collections  -%}
         window.wn.product_collections.push({{c.id}})
-      {% endfor %}
-    {% endunless %}
-  {% endif %}
+      {%- endfor  -%}
+    {%- endunless  -%}
+  {%- endif  -%}
 
-  {% if cart %}
+  {%- if cart  -%}
   	window.wn.cart = {{cart | json}}
     window.wn.cart.items = [];
 
-    {% for item in cart.items %}
+    {%- for item in cart.items  -%}
       var cart_item = {{item | json}};
       cart_item["collection_ids"] = [];
-      {% for c in item.product.collections %}
+      {%- for c in item.product.collections  -%}
         cart_item["collection_ids"].push({{c.id}})
-      {% endfor %}
+      {%- endfor  -%}
       window.wn.cart.items.push(cart_item);
-    {% endfor %}
+    {%- endfor  -%}
 
     if (typeof window.wn.cart.items == "object") {
       for (var i=0; i<window.wn.cart.items.length; i++) {
@@ -45,10 +45,10 @@ Helper for Wholesale Now (https://apps.shopify.com/wholesale-now)
         })
       }
     }
-  {% endif %}
+  {%- endif  -%}
 </script>
 
-{% raw  %}
+{%- raw   -%}
 <script id="wholesale-now-discount-tiers-table" type="text/x-handlebars-template">
   <div class="wholesale-now-discount-tiers" id="discount-group-{{{discount_group_id}}}">
     <h4 class="wholesale-now-discount-title">{{{table_header}}}</h4>
@@ -190,10 +190,10 @@ Helper for Wholesale Now (https://apps.shopify.com/wholesale-now)
   </tfoot>
 </script>
 
-{% endraw %}
+{%- endraw  -%}
 
-{% render 'wholesale-now-widgets', customer: customer, theme: theme %}
-{% render 'wholesale-now-settings' %}
+{%- render 'wholesale-now-widgets', customer: customer, theme: theme  -%}
+{%- render 'wholesale-now-settings'  -%}
 
 <div id="wn-net-order-form" class="wn-modal">
   <div id="wn-net-order-modal-content">
@@ -209,7 +209,7 @@ Helper for Wholesale Now (https://apps.shopify.com/wholesale-now)
         <th class="wn-pull-right" id="total-header">Total</th>
       </thead>
       <tbody>
-      {% for item in cart.items %}
+      {%- for item in cart.items  -%}
       <tr class="wn-cart-row line{{ forloop.index }}">
         <td class="">
           <img class="wn-cart-image" src="{{ item | img_url: '95x95', scale: 2 }}" alt="{{ item.title | escape }}">
@@ -218,15 +218,15 @@ Helper for Wholesale Now (https://apps.shopify.com/wholesale-now)
           <div class="wn-item-title">
               {{ item.product.title }}
           </div>
-          {% unless item.variant.title contains 'Default' %}
+          {%- unless item.variant.title contains 'Default'  -%}
           <div class="wn-item-meta">
-            {% for option in item.product.options %}
+            {%- for option in item.product.options  -%}
             {{ option }}: {{ item.variant.options[forloop.index0] }}<br/>
-            {% endfor %}
+            {%- endfor  -%}
           </div>
-          {% endunless %}
+          {%- endunless  -%}
 
-          {% comment %}
+          {%- comment  -%}
           Optional, loop through custom product line items if available
 
           Line item properties come in as having two parts. The first part will be passed with the default form,
@@ -234,52 +234,52 @@ Helper for Wholesale Now (https://apps.shopify.com/wholesale-now)
 
           For more info on line item properties, visit:
           - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
-          {% endcomment %}
+          {%- endcomment  -%}
           {%- assign property_size = item.properties | size -%}
-          {% if property_size > 0 %}
+          {%- if property_size > 0  -%}
           <div class="">
-            {% for p in item.properties %}
-            {% unless p.last == blank %}
+            {%- for p in item.properties  -%}
+            {%- unless p.last == blank  -%}
             {{ p.first }}:
 
-            {% comment %}
+            {%- comment  -%}
             Check if there was an uploaded file associated
-            {% endcomment %}
-            {% if p.last contains '/uploads/' %}
+            {%- endcomment  -%}
+            {%- if p.last contains '/uploads/'  -%}
             <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-            {% else %}
+            {%- else  -%}
             {{ p.last }}
-            {% endif %}
-            {% endunless %}
-            {% endfor %}
+            {%- endif  -%}
+            {%- endunless  -%}
+            {%- endfor  -%}
           </div>
-          {% endif %}
+          {%- endif  -%}
         </td>
         <td class="wn-item-price">
           {{ item.price | money }}
 
-          {% for discount in item.discounts %}
+          {%- for discount in item.discounts  -%}
           <div class="wn-item-discount">{{ discount.title }}</div>
-          {% endfor %}
+          {%- endfor  -%}
         </td>
         <td class="wn-item-qty">
           {{ item.quantity }}
         </td>
         <td>
-          {% if item.original_line_price != item.line_price %}
+          {%- if item.original_line_price != item.line_price  -%}
           <div class="wn-item-original-price"><s>{{ item.original_line_price | money }}</s></div>
-          {% endif %}
+          {%- endif  -%}
 
           <div class="wn-item-discounted-price">
             {{ item.line_price | money }}
           </div>
 
-          {% for discount in item.discounts %}
+          {%- for discount in item.discounts  -%}
           <div class="wn-item-discount">{{ discount.title }}</div>
-          {% endfor %}
+          {%- endfor  -%}
         </td>
       </tr>
-      {% endfor %}
+      {%- endfor  -%}
       </tbody>
       <tfoot>
        <tr id="wn-net-order-subtotal">

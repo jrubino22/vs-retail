@@ -1,4 +1,4 @@
-{% layout none %}
+{%- layout none  -%}
 {%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
 
 {%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
@@ -7,19 +7,19 @@
    replace:'\u0026','&'
 -%}
 
-{% assign handles = pageUrl | split: 'handle=' | last %}
+{%- assign handles = pageUrl | split: 'handle=' | last  -%}
 
-{% assign h_array = handles | split: ',' %}
+{%- assign h_array = handles | split: ','  -%}
 
-{% capture output %}
+{%- capture output  -%}
 {
 	"products":
         [
-            {% for handler in h_array %}
-{% assign decoded_handle = handler | url_decode %}
-{% assign item = all_products[decoded_handle] %}
+            {%- for handler in h_array  -%}
+{%- assign decoded_handle = handler | url_decode  -%}
+{%- assign item = all_products[decoded_handle]  -%}
 
-			   {% include 'wcp_discount' with item %} 				
+			   {%- include 'wcp_discount' with item  -%} 				
                 {
 					              
 				    "id"  : "{{item.id}}"
@@ -49,19 +49,19 @@
 
 					,"_wpd_price":{{ wcp_price }}   
 
-					{% if wcp_compare_at_price == blank %}
+					{%- if wcp_compare_at_price == blank  -%}
 						         ,"_wpd_compare_at_price":0         
-					{% else %}
+					{%- else  -%}
 								 ,"_wpd_compare_at_price":{{ wcp_compare_at_price }}
-					{% endif %}					                  
+					{%- endif  -%}					                  
 
 					,"price":"{{ item.price | money_without_currency}}"                    
 					,"compare_at_price":"{{ item.compare_at_price | money_without_currency }}"
 					   
 					,"variants":[
-						{% for varnts in item.variants %}
+						{%- for varnts in item.variants  -%}
 							{ 
-								{% include 'wcp_variant' with varnts %}
+								{%- include 'wcp_variant' with varnts  -%}
 
 								"id":"{{varnts.id}}"                                 
 								,"product_id":"{{item.id}}"
@@ -69,40 +69,40 @@
 								,"title":{{varnts.title | json }}
 								,"available":"{{varnts.available}}"
 								,"price":"{{ varnts.price | money_without_currency}}"
-								{% if varnts.compare_at_price == blank %}
+								{%- if varnts.compare_at_price == blank  -%}
 									,"compare_at_price":"0"
-								{% else %}
+								{%- else  -%}
 									,"compare_at_price":"{{ varnts.compare_at_price | money_without_currency }}"
-								{% endif %}								
-								{% if wcp_v_compare_at_price == blank %}
+								{%- endif  -%}								
+								{%- if wcp_v_compare_at_price == blank  -%}
 									,"wpd_compare_at_price":"0"	
 									,"_wpd_compare_at_price":0	
-								{% else %}
+								{%- else  -%}
 									,"wpd_compare_at_price":"{{wcp_v_compare_at_price | money_without_currency }}"
 									,"_wpd_compare_at_price":{{ wcp_v_compare_at_price }}
-								{% endif %}
+								{%- endif  -%}
 								,"wpd_price":"{{ wcp_v_price | money_without_currency}}"	
 								,"_wpd_price":{{ wcp_v_price }}
-								{% if set_v_price == null %}
+								{%- if set_v_price == null  -%}
 									,"IsIndividualPrice":false
-								{% else %}
+								{%- else  -%}
 									,"IsIndividualPrice":true
 								{%endif%}
 								,"inventory_quantity":"{{ varnts.inventory_quantity }}"
 								,"inventory_management":"{{varnts.inventory_management}}"
 								,"inventory_policy": "{{varnts.inventory_policy}}"
 							}
-						{% unless forloop.last %},{% endunless %}
-						{% endfor %}
+						{%- unless forloop.last  -%},{%- endunless  -%}
+						{%- endfor  -%}
 
 					]
                 }
-				{% unless forloop.last %},{% endunless %}
+				{%- unless forloop.last  -%},{%- endunless  -%}
                
-            {% endfor %}
+            {%- endfor  -%}
 
         ]
 
 }
-{% endcapture %}
+{%- endcapture  -%}
 {{- output | strip_newlines -}}

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="one-third column thumbnail gallery-image-wrapper">
-      {% if block.settings.detail_image_1 %}
+      {%- if block.settings.detail_image_1  -%}
         <div class="gallery-cell">
           <a  href="{{ block.settings.detail_image_1 |  img_url: '2000x' }}"
               class="gallery gallery-{{ section.id }}"
@@ -10,15 +10,15 @@
               data-height="{{ block.settings.detail_image_1.height }}"
               data-srcset="{{ block.settings.detail_image_1 |  img_url: '1600x' }} 1600w, {{ block.settings.detail_image_1 |  img_url: '1200x' }} 1200w, {{ block.settings.detail_image_1 |  img_url: '640x' }} 640w"
               rel="gallery">
-            {% include 'image-element', image: block.settings.detail_image_1, alt: block.settings.detail_image_1.alt %}
+            {%- include 'image-element', image: block.settings.detail_image_1, alt: block.settings.detail_image_1.alt  -%}
           </a>
         </div>
-      {% else %}
+      {%- else  -%}
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-      {% endif %}
+      {%- endif  -%}
     </div>
     <div class="one-third column thumbnail gallery-image-wrapper">
-      {% if block.settings.detail_image_2 %}
+      {%- if block.settings.detail_image_2  -%}
         <div class="gallery-cell">
           <a  href="{{ block.settings.detail_image_2 |  img_url: '2000x' }}"
               class="gallery gallery-{{ section.id }}"
@@ -28,15 +28,15 @@
               data-height="{{ block.settings.detail_image_2.height }}"
               data-srcset="{{ block.settings.detail_image_2 |  img_url: '1600x' }} 1600w, {{ block.settings.detail_image_2 |  img_url: '1200x' }} 1200w, {{ block.settings.detail_image_2 |  img_url: '640x' }} 640w"
               rel="gallery">
-            {% include 'image-element', image: block.settings.detail_image_2, alt: block.settings.detail_image_2.alt %}
+            {%- include 'image-element', image: block.settings.detail_image_2, alt: block.settings.detail_image_2.alt  -%}
           </a>
         </div>
-      {% else %}
+      {%- else  -%}
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-      {% endif %}
+      {%- endif  -%}
     </div>
     <div class="one-third column thumbnail gallery-image-wrapper">
-      {% if block.settings.detail_image_3 %}
+      {%- if block.settings.detail_image_3  -%}
         <div class="gallery-cell">
           <a  href="{{ block.settings.detail_image_3 |  img_url: '2000x' }}"
               class="gallery gallery-{{ section.id }}"
@@ -46,11 +46,11 @@
               data-height="{{ block.settings.detail_image_3.height }}"
               data-srcset="{{ block.settings.detail_image_3 |  img_url: '1600x' }} 1600w, {{ block.settings.detail_image_3 |  img_url: '1200x' }} 1200w, {{ block.settings.detail_image_3 |  img_url: '640x' }} 640w"
               rel="gallery">
-            {% include 'image-element', image: block.settings.detail_image_3, alt: block.settings.detail_image_3.alt %}
+            {%- include 'image-element', image: block.settings.detail_image_3, alt: block.settings.detail_image_3.alt  -%}
           </a>
         </div>
-      {% else %}
+      {%- else  -%}
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-      {% endif %}
+      {%- endif  -%}
     </div>
 </div>

@@ -1,4 +1,4 @@
-{% capture content %}
+{%- capture content  -%}
 <!DOCTYPE html>
 <html lang="{{ shop.locale }}">
   <head>
@@ -14,9 +14,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="{{ settings.shop_bg_color }}">
 
-    {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}
+    {%- if current_tags  -%}{%- assign meta_tags = current_tags | join: ', '  -%}{%- endif  -%}
     <title>
-      {% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}
+      {%- if template contains "index"  -%}{{ page_title }}{%- else  -%}{{ page_title }}{%- if current_tags  -%} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{%- endif  -%}{%- if current_page != 1  -%} {{ 'general.meta.page' | t: page_number: current_page }}{%- endif  -%}{%- unless page_title contains shop.name  -%} - {{ shop.name }}{%- endunless  -%}{%- endif  -%}
     </title>
 
     <link rel="preconnect dns-prefetch" href="https://fonts.shopifycdn.com" />
@@ -24,9 +24,9 @@
     <link rel="preconnect dns-prefetch" href="https://v.shopify.com" />
     <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com" />
 
-    {% if settings.enable_shopify_review_comments %}
+    {%- if settings.enable_shopify_review_comments  -%}
     <link rel="preconnect dns-prefetch" href="https://productreviews.shopifycdn.com" />
-    {% endif %}
+    {%- endif  -%}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css">
     <!-- Stylesheets for Turbo 4.1.3 -->
@@ -54,11 +54,11 @@
     </script>
     
 
-    {% if page_description %}
-    <meta name="description" content="{% if template contains 'search' %} {{ page_title }} - {{ shop.name }} {% else %}{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}{% endif %}" />
-    {% endif %}
+    {%- if page_description  -%}
+    <meta name="description" content="{%- if template contains 'search'  -%} {{ page_title }} - {{ shop.name }} {%- else  -%}{{ page_description | escape }}{%- if current_tags  -%} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{%- endif  -%}{%- if current_page != 1  -%} {{ 'general.meta.page' | t: page_number: current_page }}.{%- endif  -%}{%- endif  -%}" />
+    {%- endif  -%}
 
-    {% if settings.favicon != nil %}
+    {%- if settings.favicon != nil  -%}
     <link rel="shortcut icon" type="image/x-icon" href="{{ settings.favicon | img_url: '180x180' }}">
     <link rel="apple-touch-icon" href="{{ settings.favicon | img_url: '180x180' }}"/>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ settings.favicon | img_url: '57x57' }}"/>
@@ -68,50 +68,50 @@
     <link rel="apple-touch-icon" sizes="114x114" href="{{ settings.favicon | img_url: '114x114' }}"/>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | img_url: '180x180' }}"/>
     <link rel="apple-touch-icon" sizes="228x228" href="{{ settings.favicon | img_url: '228x228' }}"/>
-    {% else %}
+    {%- else  -%}
     <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
-    {% endif %}
+    {%- endif  -%}
     <link rel="canonical" href="{{ canonical_url }}" />
 
-    {% if template contains 'customer' %}
+    {%- if template contains 'customer'  -%}
     {{ "shopify_common.js" | shopify_asset_url | script_tag }}
     {{ "customer_area.js" | shopify_asset_url | script_tag }}
-    {% endif %}
+    {%- endif  -%}
     {{ content_for_header }}
 
-    {% include 'social-meta-info' %}
-    {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
-    {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
+    {%- include 'social-meta-info'  -%}
+    {%- if collection.previous_product  -%}<link rel="prev" href="{{ collection.previous_product }}">{%- endif  -%}
+    {%- if collection.next_product  -%}<link rel="next" href="{{ collection.next_product }}">{%- endif  -%}
     {{ 'ak_mm_amtQty.scss.css' | asset_url | stylesheet_tag }}  </head>
 
 
-  {% if template contains "index" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "collection" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "blog" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "article" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "contact" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "product" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "gallery" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "banner" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "details" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "faq" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "search" %}
-  {% assign feature_image = true %}
-  {% elsif template contains "cart" %}
-  {% assign feature_image = true %}
-  {% else %}
-  {% assign feature_image = false %}
-  {% endif %}
+  {%- if template contains "index"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "collection"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "blog"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "article"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "contact"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "product"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "gallery"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "banner"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "details"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "faq"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "search"  -%}
+  {%- assign feature_image = true  -%}
+  {%- elsif template contains "cart"  -%}
+  {%- assign feature_image = true  -%}
+  {%- else  -%}
+  {%- assign feature_image = false  -%}
+  {%- endif  -%}
 
   <noscript>
     <style>
@@ -132,62 +132,62 @@
   </noscript>
 
 
-  {% include 'globo.formbuilder.scripts' %}
-  <body class="{% if template == '404' %}error-404{% else %}{{ template | replace: '.', '-' | handle }}{% endif %}"
+  {%- include 'globo.formbuilder.scripts'  -%}
+  <body class="{%- if template == '404'  -%}error-404{%- else  -%}{{ template | replace: '.', '-' | handle }}{%- endif  -%}"
         data-money-format="{{ shop.money_format }}" data-shop-url="{{ shop.url }}">
 
-    {% section 'header' %}
+    {%- section 'header'  -%}
 
     <div class="mega-menu-container">
-      {% if settings.mega_menu_1 %}
-      {% section 'mega-menu-1' %}
-      {% endif %}
+      {%- if settings.mega_menu_1  -%}
+      {%- section 'mega-menu-1'  -%}
+      {%- endif  -%}
 
-      {% if settings.mega_menu_2 %}
-      {% section 'mega-menu-2' %}
-      {% endif %}
+      {%- if settings.mega_menu_2  -%}
+      {%- section 'mega-menu-2'  -%}
+      {%- endif  -%}
 
-      {% if settings.mega_menu_3 %}
-      {% section 'mega-menu-3' %}
-      {% endif %}
+      {%- if settings.mega_menu_3  -%}
+      {%- section 'mega-menu-3'  -%}
+      {%- endif  -%}
 
-      {% if settings.mega_menu_4 %}
-      {% section 'mega-menu-4' %}
-      {% endif %}
+      {%- if settings.mega_menu_4  -%}
+      {%- section 'mega-menu-4'  -%}
+      {%- endif  -%}
 
-      {% if settings.mega_menu_5 %}
-      {% section 'mega-menu-5' %}
-      {% endif %}
+      {%- if settings.mega_menu_5  -%}
+      {%- section 'mega-menu-5'  -%}
+      {%- endif  -%}
 
     </div>
 
-    {% unless feature_image %}
+    {%- unless feature_image  -%}
     <div class="container main content">
-      {% endunless %}
+      {%- endunless  -%}
 
       {{ content_for_layout }}
     </div>
 
-    {% unless template contains 'index' or settings.secondary_newsletter_banner == false %}
-    {% section 'newsletter' %}
-    {% endunless %}
+    {%- unless template contains 'index' or settings.secondary_newsletter_banner == false  -%}
+    {%- section 'newsletter'  -%}
+    {%- endunless  -%}
 
-    {% section 'footer' %}
+    {%- section 'footer'  -%}
 
-    {% if settings.size_chart != blank %}
-    {% include 'popup-size-chart' %}
-    {% endif %}
-    {% if settings.newsletter_popup %}
-    {% include 'popup-newsletter' %}
-    {% endif %}
-    {% if settings.quick_shop_enabled %}
-    {% include 'popup-quick-shop' %}
-    {% endif %}
-    {% if settings.disqus_enabled %}
-    {% if template contains "blog" or template contains "article" or template contains "index" %}
+    {%- if settings.size_chart != blank  -%}
+    {%- include 'popup-size-chart'  -%}
+    {%- endif  -%}
+    {%- if settings.newsletter_popup  -%}
+    {%- include 'popup-newsletter'  -%}
+    {%- endif  -%}
+    {%- if settings.quick_shop_enabled  -%}
+    {%- include 'popup-quick-shop'  -%}
+    {%- endif  -%}
+    {%- if settings.disqus_enabled  -%}
+    {%- if template contains "blog" or template contains "article" or template contains "index"  -%}
     <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
-    {% endif %}
-    {% endif %}
+    {%- endif  -%}
+    {%- endif  -%}
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script src="{{ 'vendors.js' | asset_url }}"></script>
@@ -195,14 +195,14 @@
     <script src="{{ 'utilities.js' | asset_url }}"></script>
     <script src="{{ 'app.js' | asset_url }}"></script>
 
-    {% if settings.show_multiple_currencies %}
-    {% include 'currencies' %}
-    {% endif %}
-    {% if settings.show_shipping_calculator and template contains "cart" %}
-    {% include 'cart-shipping-scripts' %}
-    {% endif %}
+    {%- if settings.show_multiple_currencies  -%}
+    {%- include 'currencies'  -%}
+    {%- endif  -%}
+    {%- if settings.show_shipping_calculator and template contains "cart"  -%}
+    {%- include 'cart-shipping-scripts'  -%}
+    {%- endif  -%}
 
-    {% unless settings.performance == "sport" or template contains "customer" %}
+    {%- unless settings.performance == "sport" or template contains "customer"  -%}
     <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant></script>
 
     <script data-no-instant>
@@ -233,7 +233,7 @@
         });
       }
     </script>
-    {% endunless %}
+    {%- endunless  -%}
 
     <script>
       {{ settings.custom_scripts }}
@@ -242,11 +242,11 @@
     <script>window.pipedriveLeadboosterConfig = {base: 'leadbooster-chat.pipedrive.com',companyId: 3873388,playbookUuid: '13469c65-eaf6-4368-b506-3479d3a880bc',version: 2};</script><script src="https://leadbooster-chat.pipedrive.com/assets/loader.js" async></script>
 
     <!-- **BEGIN** Hextom SPM Integration // Main Include - DO NOT MODIFY -->
-    {% include 'hextom_spm_main' %}
+    {%- include 'hextom_spm_main'  -%}
     <!-- **END** Hextom SPM Integration // Main Include - DO NOT MODIFY -->
-    {% include 'ak_mm_variables' %}  {% render 'quantity-breaks-now', customer: customer, template: template, product: product, cart: cart %}
+    {%- include 'ak_mm_variables'  -%}  {%- render 'quantity-breaks-now', customer: customer, template: template, product: product, cart: cart  -%}
     <!-- WPD Start -->
-    {% if customer.tags.size > 0 and template != 'cart' %}
+    {%- if customer.tags.size > 0 and template != 'cart'  -%}
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         let checkoutbtninterval = setInterval(function(){
@@ -262,15 +262,15 @@
         },500)
         });
     </script>
-    {% endif %}
+    {%- endif  -%}
 
 
-    {% if customer.tags.size > 0 and template == 'cart' %}
-    {% include 'wcp_cart' %}
-    {% endif %}
+    {%- if customer.tags.size > 0 and template == 'cart'  -%}
+    {%- include 'wcp_cart'  -%}
+    {%- endif  -%}
     <!-- WPD End -->
 
-    {% if canonical_url contains '/apps/shop' %}
+    {%- if canonical_url contains '/apps/shop'  -%}
     <style>
       table{ font-size:15px !important; }
       tbody tr{ display: table-row !important; }
@@ -278,8 +278,8 @@
       table {font-size:12px !important;}
     </style>
 
-    {% endif %}
-    {% render 'wholesale-now', customer: customer, template: template, product: product, cart: cart %}
+    {%- endif  -%}
+    {%- render 'wholesale-now', customer: customer, template: template, product: product, cart: cart  -%}
   </body>
 
   <script>
@@ -337,6 +337,6 @@
     });
   </script>
 </html>
-{% endcapture %}
-{% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
-{% for html in content %}{% assign htmlblock = html | strip | prepend: ' <' %}{{htmlblock | replace: ' </', '</'}}{% endfor %}
+{%- endcapture  -%}
+{%- assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <'  -%}
+{%- for html in content  -%}{%- assign htmlblock = html | strip | prepend: ' <'  -%}{{htmlblock | replace: ' </', '</'}}{%- endfor  -%}

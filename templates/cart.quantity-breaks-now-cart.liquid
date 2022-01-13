@@ -1,22 +1,22 @@
-{% comment %}
+{%- comment  -%}
 Cart helper for Quantity Breaks Now (https://apps.shopify.com/quantity-breaks-now)
-{% endcomment %}
-{% layout none %}
-{% if cart %}
+{%- endcomment  -%}
+{%- layout none  -%}
+{%- if cart  -%}
 {
 "primary_domain": "{{shop.domain}}",
 "enabled_currencies_count": {{shop.enabled_currencies | size}},
 "enabled_currencies":[
-{% for currency in shop.enabled_currencies %}
+{%- for currency in shop.enabled_currencies  -%}
 {
 	"iso_code":"{{currency.iso_code}}",
 	"name":"{{currency.name}}",
 	"symbol":"{{currency.symbol}}"
 }
-{% if forloop.last != true %}
+{%- if forloop.last != true  -%}
 ,
-  {% endif %}
-{% endfor %}
+  {%- endif  -%}
+{%- endfor  -%}
 ],
 "current_shop_currency": "{{cart.currency.iso_code}}",
 "original_total_price": {{ cart.original_total_price }},
@@ -25,7 +25,7 @@ Cart helper for Quantity Breaks Now (https://apps.shopify.com/quantity-breaks-no
 "total_weight": {{ cart.total_weight }},
 "item_count": {{ cart.item_count }},
 "items":[
-    {% for item in cart.items %}
+    {%- for item in cart.items  -%}
 {
 "id":{{ item.id }},
 "variant_id":{{ item.variant_id }},
@@ -35,9 +35,9 @@ Cart helper for Quantity Breaks Now (https://apps.shopify.com/quantity-breaks-no
 "image":"{{ item | img_url: 'medium' }}",
 "quantity":{{ item.quantity }},
 "price":{{ item.price }},
-"properties":{ {% for property in item.properties %}
-  "{{ property[0] }}": "{{ property[1] }}"{% unless forloop.last %},{% endunless %}
-{% endfor %} },
+"properties":{ {%- for property in item.properties  -%}
+  "{{ property[0] }}": "{{ property[1] }}"{%- unless forloop.last  -%},{%- endunless  -%}
+{%- endfor  -%} },
 "original_price":{{ item.original_price }},
 "original_line_price":{{ item.original_line_price }},
 "discounted_price":{{ item.discounted_price }},
@@ -50,16 +50,16 @@ Cart helper for Quantity Breaks Now (https://apps.shopify.com/quantity-breaks-no
 "variant_options":"{{ item.variant_options }}",
 "title":"{{ item.title }}",
 "collection_ids":[
-{% for c in item.product.collections %}
+{%- for c in item.product.collections  -%}
 {{ c.id }}
-  {% if forloop.last != true %}
+  {%- if forloop.last != true  -%}
 ,
-  {% endif %}
-{% endfor %}
+  {%- endif  -%}
+{%- endfor  -%}
 ]}
-{% if forloop.last != true %}
+{%- if forloop.last != true  -%}
 ,
-{% endif %}
-    {% endfor %}
+{%- endif  -%}
+    {%- endfor  -%}
 ]}
-{% endif %}
+{%- endif  -%}

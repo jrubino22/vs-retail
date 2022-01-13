@@ -1,15 +1,15 @@
 <section  id="slide-slider-{{section.id}}" class="slick-slider-animation--{{ section.settings.slideshow_animation }}">
   
   <div id="" class="lazy">
-    {% for block in section.blocks %}
+    {%- for block in section.blocks  -%}
         <div>
            <img src="{{ block.settings.image | img_url: 'original' }}" alt="" class="slider_img">
         </div>   
       
-    {% endfor %}
+    {%- endfor  -%}
    </div>
 </section>
-{% schema %}
+{%- schema  -%}
 {
   "name": "Slideshow",
   "max_blocks": 6,
@@ -49,14 +49,14 @@
     }
   ]
 }
-{% endschema %}
+{%- endschema  -%}
 
-{% stylesheet %}
+{%- stylesheet  -%}
 	
-{% endstylesheet %}
+{%- endstylesheet  -%}
 
   
 
-{% javascript %}
+{%- javascript  -%}
     
-{% endjavascript %}
+{%- endjavascript  -%}

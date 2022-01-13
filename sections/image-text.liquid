@@ -1,58 +1,58 @@
-{% comment %}
+{%- comment  -%}
 ** Image with text (half and half view) - homepage partial **
 - Draggable section
 - Uses blocks
-{% endcomment %}
-{% if section.settings.frontpage_grid_style == false %}
+{%- endcomment  -%}
+{%- if section.settings.frontpage_grid_style == false  -%}
   <div class="container">
     <div class="sixteen columns">
-{% endif %}
+{%- endif  -%}
     <div class="image-with-text
                 featured_collections
                 clearfix across-{{section.settings.featured_links_per_row}} image-align--{{ section.settings.frontpage_image_position }}
                 full-width--{{ section.settings.frontpage_grid_style }}">
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
+      {%- if section.blocks.size > 0  -%}
+        {%- for block in section.blocks  -%}
           <section class="featured-link--section featured-link--image section-{{ forloop.index }}" {{ block.shopify_attributes }}>
             <div class="featured-link--half featured-link--image featured-link--margin image-crop--{{ block.settings.image_crop }}">
               <div class="featured-link--wrap">
-                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} title="{{ block.settings.title }}">
-                  {% if block.settings.image %}
-                    {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt, stretch_width: true %}
-                  {% else %}
-                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                <a {%- if block.settings.link != blank  -%}href="{{ block.settings.link }}"{%- endif  -%} title="{{ block.settings.title }}">
+                  {%- if block.settings.image  -%}
+                    {%- include 'image-element', image: block.settings.image, alt: block.settings.image.alt, stretch_width: true  -%}
+                  {%- else  -%}
+                    {%- capture i  -%}{%- cycle "1", "2", "3", "4", "5", "6"  -%}{%- endcapture  -%}
                     {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
-                  {% endif %}
+                  {%- endif  -%}
                 </a>
               </div>
             </div>
             <div class="featured-link--half block--{{ block.id }}">
               <div class="info text-align--{{section.settings.frontpage_text_align}}">
-                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="collection_title">
+                <a {%- if block.settings.link != blank  -%}href="{{ block.settings.link }}"{%- endif  -%} class="collection_title">
                   {{ block.settings.title }}
                 </a>
-                {% if block.settings.text != blank %}
+                {%- if block.settings.text != blank  -%}
                   <div class="description">{{ block.settings.text }}</div>
-                {% endif %}
-                {% if block.settings.button_label != blank %}
-                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="button">
+                {%- endif  -%}
+                {%- if block.settings.button_label != blank  -%}
+                  <a {%- if block.settings.link != blank  -%}href="{{ block.settings.link }}"{%- endif  -%} class="button">
                     {{ block.settings.button_label }}
                   </a>
-                {% endif %}
+                {%- endif  -%}
               </div>
             </div>
           </section>
-        {% endfor %}
-      {% endif %}
+        {%- endfor  -%}
+      {%- endif  -%}
     </div>
-{% if section.settings.frontpage_grid_style == false %}
+{%- if section.settings.frontpage_grid_style == false  -%}
     </div>
   </div>
-{% endif %}
+{%- endif  -%}
 
 <style>
 
-  {% for block in section.blocks %}
+  {%- for block in section.blocks  -%}
     .block--{{ block.id }} {
       background-color: {{ block.settings.bg_color }};
     }
@@ -66,9 +66,9 @@
       color: {{ block.settings.text_color }};
       border-color: {{ block.settings.text_color }};
     }
-  {% endfor %}
+  {%- endfor  -%}
 
-  {% if section.settings.frontpage_grid_style == false and section.settings.featured_links_per_row == '1' %}
+  {%- if section.settings.frontpage_grid_style == false and section.settings.featured_links_per_row == '1'  -%}
       #shopify-section-{{ section.id }} .featured-link--section {
         margin-bottom: 3%;
       }
@@ -82,24 +82,24 @@
         width: 45%;
       }
       #shopify-section-{{ section.id }} .featured-link--margin {
-        {% if section.settings.frontpage_image_position == 'right' %}
+        {%- if section.settings.frontpage_image_position == 'right'  -%}
           margin-left: 3%;
-        {% else %}
+        {%- else  -%}
           margin-left: 0;
           margin-right: 3%;
-        {% endif %}
+        {%- endif  -%}
       }
       #shopify-section-{{ section.id }} .featured-link--section:nth-child(even) .featured-link--margin {
-        {% if section.settings.frontpage_image_position == 'right' %}
+        {%- if section.settings.frontpage_image_position == 'right'  -%}
           margin-left: 0;
           margin-right: 3%;
-        {% else %}
+        {%- else  -%}
           margin-left: 3%;
           margin-right: 0;
-        {% endif %}
+        {%- endif  -%}
       }
 
-    {% elsif section.settings.frontpage_grid_style == false and section.settings.featured_links_per_row == '2' %}
+    {%- elsif section.settings.frontpage_grid_style == false and section.settings.featured_links_per_row == '2'  -%}
 
         @media only screen and (max-width: 480px) {
           #shopify-section-{{ section.id }} .featured-link--section {
@@ -117,10 +117,10 @@
           margin-right: 0;
         }
 
-      {% endif %}
+      {%- endif  -%}
 </style>
 
-{% schema %}
+{%- schema  -%}
 {
   "name": "Image with text",
   "class": "image-with-text-section",
@@ -275,4 +275,4 @@
     ]
   }]
 }
-{% endschema %}
+{%- endschema  -%}

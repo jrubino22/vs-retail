@@ -5,14 +5,14 @@
 }
 </style>
 
-{% if customer %}
+{%- if customer  -%}
 <style type="text/css">
 
-{% if theme.name contains 'Parallax' %}
+{%- if theme.name contains 'Parallax'  -%}
 #cart .mm-subtitle input.wn-net-order-button{margin-top:10px;}
 .mm-counter .wn-min-cart-warnings, .mm-counter .wn-next-tier-offers{display:none}
-{% endif %}
-{% if theme.name == 'Narrative' %}
+{%- endif  -%}
+{%- if theme.name == 'Narrative'  -%}
 body .drawer .wn-min-cart-warnings, body .drawer .wn-next-tier-offers, body .drawer .wn-discount-log {
     max-width: 250px;
     width:100%;
@@ -26,8 +26,8 @@ body .drawer .wn-min-cart-warnings, body .drawer .wn-next-tier-offers, body .dra
       font-size:12px;
   }
 }
-{% endif %}
-{% if theme.name == 'Boundless' %}
+{%- endif  -%}
+{%- if theme.name == 'Boundless'  -%}
 body #CartDrawer .ajaxcart__footer{
 	width:300px;
 }
@@ -35,8 +35,8 @@ body #CartDrawer .wn-min-cart-warnings, body #CartDrawer .wn-next-tier-offers, b
     max-width:220px;
     width:100%;
 }
-{% endif %}
-{% if theme.name == 'Brooklyn' %}
+{%- endif  -%}
+{%- if theme.name == 'Brooklyn'  -%}
 
 body #CartDrawer .text-right .wn-min-cart-warnings, body #CartDrawer .text-right .wn-next-tier-offers, body #CartDrawer .text-right .wn-discount-log {
     margin-left: calc(100% - 310px);
@@ -57,8 +57,8 @@ body #CartDrawer .ajaxcart__footer{
 }
 body #CartDrawer .ajaxcart__subtotal .wn-discounted-subtotal{margin-left:0px;}
 }
-{% endif %}
-{% if theme.name == 'Pop' %}
+{%- endif  -%}
+{%- if theme.name == 'Pop'  -%}
 body .text-center .wn-min-cart-warnings, body .text-center .wn-next-tier-offers, body .text-center .wn-discount-log{
 	margin: 10px 0px 10px calc(100% - 300px);
 }
@@ -74,7 +74,7 @@ body .text-center .wn-min-cart-warnings, body .text-center .wn-next-tier-offers,
 	margin:10px auto;
 }
 }
-{% endif %}
+{%- endif  -%}
 
 .wholesale-now-cart-total {font-weight:bold; display:block; margin-top: 5px;}
 .additional-notes{text-align:right;background-color: #FFFF4D;}
@@ -485,13 +485,13 @@ body .wholesale-now-discount-table th, body .wholesale-now-discount-table td {
   border: none;
 }
 
-{% comment %} body .quantity-breaks-now-wrapper #table-type, body .quantity-breaks-now-wrapper #default-type {
+{%- comment  -%} body .quantity-breaks-now-wrapper #table-type, body .quantity-breaks-now-wrapper #default-type {
   border-collapse: separate !important;
 }
 
 body .quantity-breaks-now-discount-table th, body .quantity-breaks-now-discount-table td {
   border: none;
-} {% endcomment %}
+} {%- endcomment  -%}
 
 .wholesale-now-wrapper table tr:first-child td, .wholesale-now-wrapper h4 {
     font-weight:bold;
@@ -550,11 +550,11 @@ body .quantity-breaks-now-discount-table th, body .quantity-breaks-now-discount-
   text-align:right;
 }
 
-{% comment %} .wholesale-now-discount-table td{
+{%- comment  -%} .wholesale-now-discount-table td{
   text-align: left;
   border: 1px solid #e8e9eb;
   padding: 5px 14px;
-} {% endcomment %}
+} {%- endcomment  -%}
 .shipping-rates-error{
   color:#c90000;
   font-weight:bold;
@@ -580,9 +580,9 @@ body .quantity-breaks-now-discount-table th, body .quantity-breaks-now-discount-
   margin-left: 8px;
 }
 </style>
-{% endif %}
+{%- endif  -%}
 
-{% raw  %}
+{%- raw   -%}
 <script id="wholesale-now-get-shipping-rate-form-template" type="text/x-handlebars-template">
   <div id="wholesale-now-regular-cart-get-shipping-rate-form-container">
     <form id="wholesale-now-get-shipping-rate-form" class="submit-address">
@@ -867,7 +867,7 @@ body .quantity-breaks-now-discount-table th, body .quantity-breaks-now-discount-
     </table>
   </div>
 </script>
-{% endraw %}
+{%- endraw  -%}
 
 <script type="text/javascript">
 //Handlebars

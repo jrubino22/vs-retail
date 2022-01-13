@@ -1,6 +1,6 @@
-{% comment %}
+{%- comment  -%}
 Helper for Quantity Breaks Now (https://apps.shopify.com/quantity-breaks-now)
-{% endcomment %}
+{%- endcomment  -%}
 
 <style type="text/css">
 
@@ -130,7 +130,7 @@ body .quantity-breaks-now-discount-table th, body .quantity-breaks-now-discount-
   border: none;
 }
 
-{% comment %} body .quantity-breaks-now-wrapper #default-type, body .quantity-breaks-now-wrapper #default-type th, body .quantity-breaks-now-wrapper #default-type td  {
+{%- comment  -%} body .quantity-breaks-now-wrapper #default-type, body .quantity-breaks-now-wrapper #default-type th, body .quantity-breaks-now-wrapper #default-type td  {
     border: 1px solid #ddd;
   }
 body .quantity-breaks-now-wrapper #table-type {
@@ -145,7 +145,7 @@ body .quantity-breaks-now-wrapper #table-type td {
 body .quantity-breaks-now-wrapper #table-type th {
   font-weight: 550;
   background: #ddd;
-} {% endcomment %}
+} {%- endcomment  -%}
 /** Discount Table END **/
 
 
@@ -208,7 +208,7 @@ body .quantity-breaks-now-wrapper #table-type th {
   margin-left: calc(100% - 350px) !important;
 }
 
-{% if theme.name contains 'Narrative' %}
+{%- if theme.name contains 'Narrative'  -%}
 body .drawer .qb-min-cart-warnings, body .drawer .qb-next-tier-offers, body .drawer .qb-discount-log, body .drawer .discount-code-wrapper, body .drawer .qb-discount-code-log {
     width: 250px !important;
     margin-left: 10px !important;
@@ -269,8 +269,8 @@ body .drawer .qb-discount-code-inputs {
       font-size:12px;
   }
 }
-{% endif %}
-{% if theme.name contains 'Boundless' %}
+{%- endif  -%}
+{%- if theme.name contains 'Boundless'  -%}
 body #CartDrawer .ajaxcart__footer{
 	width:300px;
 }
@@ -306,8 +306,8 @@ body #CartDrawer .qb-discount-code-tag {
     visibility: hidden;
 }
 
-{% endif %}
-{% if theme.name contains 'Brooklyn' %}
+{%- endif  -%}
+{%- if theme.name contains 'Brooklyn'  -%}
 
 body #CartDrawer .text-right .qb-min-cart-warnings, body #CartDrawer .text-right .qb-next-tier-offers, body #CartDrawer .text-right .qb-discount-log {
     margin-left: calc(100% - 310px);
@@ -344,8 +344,8 @@ body #PageContainer .text-center .qb-min-cart-warnings, body #PageContainer .tex
     margin-left: 0px;
 }
 }
-{% endif %}
-{% if theme.name contains 'Pop' %}
+{%- endif  -%}
+{%- if theme.name contains 'Pop'  -%}
 body .text-center .qb-min-cart-warnings, body .text-center .qb-next-tier-offers, body .text-center .qb-discount-log, body .text-center .qb-discount-code-log{
 	margin: 10px 0px 10px calc(100% - 300px);
 }
@@ -360,7 +360,7 @@ body .text-center .qb-min-cart-warnings, body .text-center .qb-next-tier-offers,
 	margin:10px auto;
 }
 }
-{% endif %}
+{%- endif  -%}
 
 /* DRAWER CSS */
 #ajaxifyCart .qb-min-cart-warnings, #ajaxifyCart .qb-next-tier-offers, #ajaxifyCart .qb-discount-log,
@@ -405,54 +405,54 @@ body .text-center .qb-min-cart-warnings, body .text-center .qb-next-tier-offers,
 <script type="text/javascript">
   window.qb = {};
 
-  {% if customer %}
+  {%- if customer  -%}
     window.qb.customer_tags = "{{customer.tags | join: ','}}";
     window.qb.customer_id = "{{customer.id}}";
-  {% endif %}
+  {%- endif  -%}
 
-  {% if template contains 'product' %}
-    {% unless product.id == blank %}
+  {%- if template contains 'product'  -%}
+    {%- unless product.id == blank  -%}
       window.qb.product = {
         id: {{product.id}},
         price: {{product.price}},
         variants: {{product.variants | json}}
       };
       window.qb.product_collections = []
-      {% for c in product.collections %}
+      {%- for c in product.collections  -%}
         window.qb.product_collections.push({{c.id}})
-      {% endfor %}
+      {%- endfor  -%}
 
       window.qb.enabled_multi_currencies = {
         currencies_count: {{shop.enabled_currencies | size}},
         currencies: [
-          {% for currency in shop.enabled_currencies %}
+          {%- for currency in shop.enabled_currencies  -%}
           {
               iso_code:"{{currency.iso_code}}",
               name:"{{currency.name}}",
               symbol:"{{currency.symbol}}"
           }
-          {% if forloop.last != true %}
+          {%- if forloop.last != true  -%}
           ,
-            {% endif %}
-          {% endfor %}
+            {%- endif  -%}
+          {%- endfor  -%}
          ],
         current_shop_currency: "{{shop.currency}}"
       }
-    {% endunless %}
-  {% endif %}
+    {%- endunless  -%}
+  {%- endif  -%}
 
-  {% if cart %}
+  {%- if cart  -%}
   	window.qb.cart = {{cart | json}}
     window.qb.cart.items = [];
 
-    {% for item in cart.items %}
+    {%- for item in cart.items  -%}
       var cart_item = {{item | json}};
       cart_item["collection_ids"] = [];
-      {% for c in item.product.collections %}
+      {%- for c in item.product.collections  -%}
         cart_item["collection_ids"].push({{c.id}})
-        {% endfor %}
+        {%- endfor  -%}
       window.qb.cart.items.push(cart_item);
-    {% endfor %}
+    {%- endfor  -%}
 
     if (typeof window.qb.cart.items == "object") {
       for (var i=0; i<window.qb.cart.items.length; i++) {
@@ -461,7 +461,7 @@ body .text-center .qb-min-cart-warnings, body .text-center .qb-next-tier-offers,
         })
       }
     }
-  {% endif %}
+  {%- endif  -%}
 
 
 
@@ -479,7 +479,7 @@ Handlebars.registerHelper('ifSingle', function(variants, options) {
 
 </script>
 
-{% raw  %}
+{%- raw   -%}
 <script id="quantity-breaks-now-discount-tiers-table" type="text/x-handlebars-template">
   <div class="quantity-breaks-now-discount-tiers" id="discount-group-{{{discount_group_id}}}">
     <h4 class="quantity-breaks-now-discount-title">{{{table_header}}}</h4>
@@ -540,9 +540,9 @@ Handlebars.registerHelper('ifSingle', function(variants, options) {
 </div>
 
 </script>
-{% endraw %}
+{%- endraw  -%}
 
-{% render 'quantity-breaks-now-settings' %}<script src="https://quantity-breaks-now.herokuapp.com/widget/javascript?shop=v-syndicate.myshopify.com"></script>
+{%- render 'quantity-breaks-now-settings'  -%}<script src="https://quantity-breaks-now.herokuapp.com/widget/javascript?shop=v-syndicate.myshopify.com"></script>
 <style>
 .multiple-groups-notice{margin-bottom:20px;}
 

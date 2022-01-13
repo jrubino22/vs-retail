@@ -8,7 +8,7 @@
   <div class="eight columns offset-by-four">
     <p><em>{{ 'customer.activate_account.subtext' | t }}</em></p>
 
-    {% form 'activate_customer_password' %}
+    {%- form 'activate_customer_password'  -%}
       {{ form.errors | default_errors }}
 
       <div id="password" class="clearfix large_form">
@@ -21,7 +21,7 @@
       </div>
       <input class="action_button" type="submit" value="{{ 'customer.activate_account.submit' | t }}" />
       <input type="submit" class="cancel button" name="decline" id="customer_decline" value="{{ 'customer.activate_account.cancel' | t }}" />
-    {% endform %}
+    {%- endform  -%}
   </div>
 </div>
 <br class="clear" />

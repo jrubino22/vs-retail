@@ -1,37 +1,37 @@
-{% include 'wcp_discount' with product %} 
+{%- include 'wcp_discount' with product  -%} 
 
 <div class="product-details">
   <span class="title" itemprop="name">{{ product.title }}</span>
-  {% if settings.enable_shopify_collection_badges %}
+  {%- if settings.enable_shopify_collection_badges  -%}
     <div class="shopify-reviews reviewsVisibility--{{settings.enable_shopify_review_comments}}">
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
     </div>
-  {% endif %}
-  {% if settings.display_vendor %}
+  {%- endif  -%}
+  {%- if settings.display_vendor  -%}
     <span itemprop="brand" class="brand">{{ product.vendor }}</span>
-  {% endif %}
+  {%- endif  -%}
 
-  {% if collection_handles contains 'coming-soon' %}
+  {%- if collection_handles contains 'coming-soon'  -%}
     <span class="modal_price">{{ 'collections.general.coming_soon' | t }}</span>
-  {% else %}
-    <span class="price {% if wcp_compare_at_price_max > wcp_price %}sale{% endif %}">
-      {% if product.available %}
-        {% if product.price_varies and wcp_price_min > 0 %}
+  {%- else  -%}
+    <span class="price {%- if wcp_compare_at_price_max > wcp_price  -%}sale{%- endif  -%}">
+      {%- if product.available  -%}
+        {%- if product.price_varies and wcp_price_min > 0  -%}
           <small><em>{{ 'products.general.from' | t }}</em></small>
-        {% endif %}
-          {% if wcp_price_min > 0 %}
+        {%- endif  -%}
+          {%- if wcp_price_min > 0  -%}
             <span class="money">{{ wcp_price_min | money }}</span>
-          {% else %}
+          {%- else  -%}
             {{ settings.free_price_text }}
-          {% endif %}
-      {% else %}
+          {%- endif  -%}
+      {%- else  -%}
         <span class="sold_out">{{ 'products.product.sold_out' | t }}</span>
-      {% endif %}
-      {% if wcp_compare_at_price_max > wcp_price %}
+      {%- endif  -%}
+      {%- if wcp_compare_at_price_max > wcp_price  -%}
         <span class="was_price">
           <span class="money">{{ wcp_compare_at_price | money }}</span>
         </span>
-      {% endif %}
+      {%- endif  -%}
     </span>
-  {% endif %}
+  {%- endif  -%}
 </div>
