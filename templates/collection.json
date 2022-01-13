@@ -2,6 +2,7 @@
   "sections": {
     "main": {
       "type": "collection-template",
+      "disabled": true,
       "settings": {
         "products_per_row": 3,
         "pagination_limit": 48,
@@ -18,15 +19,16 @@
       "type": "banner-with-video",
       "settings": {
         "wide_display": true,
-        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "image": "shopify:\/\/shop_images\/Screen_Shot_2021-11-08_at_11.09.16_AM.png",
+        "video": "https:\/\/www.youtube.com\/watch?v=ns1z4XSolJ4",
         "mp4": "",
         "pretext": "",
-        "title": "Your Headline",
+        "title": "",
         "subtitle": "",
         "caption_background": false,
         "caption_background_transparency": false,
-        "text_position": "center",
-        "text_align": "center",
+        "text_position": "right",
+        "text_align": "right",
         "button1": "",
         "button1_link": "",
         "button1_highlight": false,
