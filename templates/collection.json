@@ -15,6 +15,37 @@
         "toggle": false
       }
     },
+    "1642104443efac0978": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify:\/\/shop_images\/VSyndicate_SoleStash_Website_Banner2_1.jpg",
+        "pretext": "",
+        "title": "",
+        "subtitle": "",
+        "caption_background": false,
+        "caption_background_transparency": false,
+        "text_position": "center",
+        "text_align": "center",
+        "button1": "",
+        "button1_link": "",
+        "button1_highlight": false,
+        "button2": "",
+        "button2_link": "",
+        "button2_highlight": false
+      }
+    },
+    "1642104644dae4943f": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection_description": false,
+        "collection": "stash-jar",
+        "collection_style": "slider",
+        "products_per": 4,
+        "products_limit": 38
+      }
+    },
     "1642104392dbcc0d68": {
       "type": "banner-with-video",
       "settings": {
@@ -37,24 +68,23 @@
         "button2_highlight": false
       }
     },
-    "1642104402879c6d2f": {
-      "type": "featured-blog",
+    "16421047747efa6f31": {
+      "type": "featured-text",
       "settings": {
-        "title": "Blog posts",
-        "blog_widget_select": "",
-        "home_page_articles": 3,
-        "blog_tags": false,
-        "blog_author": false,
-        "read_time": true,
-        "blog_date": true,
-        "blog_comment_count": true,
-        "read_more_link": true
+        "title": "",
+        "content": "",
+        "text_size": "regular_text",
+        "text_alignment": "center",
+        "button_label": "Shop All",
+        "button_link": "shopify:\/\/collections\/stash-jar"
       }
     }
   },
   "order": [
     "main",
+    "1642104443efac0978",
+    "1642104644dae4943f",
     "1642104392dbcc0d68",
-    "1642104402879c6d2f"
+    "16421047747efa6f31"
   ]
 }
