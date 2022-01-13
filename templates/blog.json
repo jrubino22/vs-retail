@@ -1,11 +1,23 @@
 {
-    "sections": {
-        "main" : {
-            "type" : "blog-template"
-
-        }
-    },
-    "order":[
-        "main"
-    ]
+  "sections": {
+    "main": {
+      "type": "blog-template",
+      "settings": {
+        "image_darken": false,
+        "subtitle": "Blog",
+        "blog_posts_per_row": 3,
+        "blog_posts_per_page": 12,
+        "blog_tags": false,
+        "blog_author": false,
+        "read_time": true,
+        "blog_date": true,
+        "blog_comment_count": true,
+        "read_more_link": true,
+        "toggle": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
 }
