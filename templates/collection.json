@@ -1,11 +1,58 @@
 {
-    "sections": {
-        "main" : {
-            "type" : "collection-template"
-
-        }
+  "sections": {
+    "main": {
+      "type": "collection-template",
+      "settings": {
+        "products_per_row": 3,
+        "pagination_limit": 48,
+        "display_collection_title": false,
+        "collection_breadcrumb": true,
+        "collection_tags": false,
+        "collection_sort": false,
+        "featured_collection_image": false,
+        "image_darken": false,
+        "toggle": false
+      }
     },
-    "order":[
-        "main"
-    ]
+    "1642104392dbcc0d68": {
+      "type": "banner-with-video",
+      "settings": {
+        "wide_display": true,
+        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mp4": "",
+        "pretext": "",
+        "title": "Your Headline",
+        "subtitle": "",
+        "caption_background": false,
+        "caption_background_transparency": false,
+        "text_position": "center",
+        "text_align": "center",
+        "button1": "",
+        "button1_link": "",
+        "button1_highlight": false,
+        "button2": "",
+        "button2_link": "",
+        "button2_highlight": false
+      }
+    },
+    "1642104402879c6d2f": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "Blog posts",
+        "blog_widget_select": "",
+        "home_page_articles": 3,
+        "blog_tags": false,
+        "blog_author": false,
+        "read_time": true,
+        "blog_date": true,
+        "blog_comment_count": true,
+        "read_more_link": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1642104392dbcc0d68",
+    "1642104402879c6d2f"
+  ]
 }
