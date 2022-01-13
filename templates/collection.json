@@ -46,6 +46,17 @@
         "products_limit": 38
       }
     },
+    "16421047747efa6f31": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "",
+        "text_size": "regular_text",
+        "text_alignment": "center",
+        "button_label": "Shop All",
+        "button_link": "shopify:\/\/collections\/stash-jar"
+      }
+    },
     "1642104392dbcc0d68": {
       "type": "banner-with-video",
       "settings": {
@@ -67,24 +78,13 @@
         "button2_link": "",
         "button2_highlight": false
       }
-    },
-    "16421047747efa6f31": {
-      "type": "featured-text",
-      "settings": {
-        "title": "",
-        "content": "",
-        "text_size": "regular_text",
-        "text_alignment": "center",
-        "button_label": "Shop All",
-        "button_link": "shopify:\/\/collections\/stash-jar"
-      }
     }
   },
   "order": [
     "main",
     "1642104443efac0978",
     "1642104644dae4943f",
-    "1642104392dbcc0d68",
-    "16421047747efa6f31"
+    "16421047747efa6f31",
+    "1642104392dbcc0d68"
   ]
 }
